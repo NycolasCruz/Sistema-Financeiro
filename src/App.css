@@ -1,0 +1,11 @@
+.header {
+  height: 120px;
+  width: 100%;
+  background-color: #009ef7;
+}
+
+.body {
+  margin-top: -0.25rem;
+  margin-bottom: 2.25rem;
+  padding: 1.5rem 2.25rem;
+}
