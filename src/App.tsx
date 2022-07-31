@@ -7,7 +7,7 @@ export default function App() {
         <div className="card-body m-4">
             <div className="rounded-top header">
                 <div className="d-flex text-center flex-column text-white pt-8">
-                    <span className="fw-bold fs-3 pt-4">SISTEMA FINANCEIRO</span>
+                    <span className="fw-bold fs-3 title">SISTEMA FINANCEIRO</span>
                 </div>
             </div>
 
@@ -17,4 +17,3 @@ export default function App() {
         </div>
     )
 }
-
