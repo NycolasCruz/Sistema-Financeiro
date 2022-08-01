@@ -4,6 +4,10 @@
   background-color: #009ef7;
 }
 
+.title {
+  padding-top: 2.25rem;
+}
+
 .body {
   margin-top: -0.25rem;
   margin-bottom: 2.25rem;
