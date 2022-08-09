@@ -1,6 +1,18 @@
+import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { getCurrentMonth } from './helpers';
+import { Category } from './types/Category';
+import { Item } from './types/Item';
+import { categories } from './data/categories';
+import { items } from './data/items';
+
+
 export default function App() {
+    const [list, setList] = useState(items);
+    const [filteredList, setFileteredlist] = useState<Item[]>([])
+    const [currentMonth, setCurrentMonth] = useState(getCurrentMonth());
+
     return (
         <div className="card-body m-12">
             <div className="rounded-top bg-blue" style={{height: '8rem'}}>
