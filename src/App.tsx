@@ -1,22 +1,19 @@
 import { useEffect, useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Category } from './types/Category';
-import { Item } from './types/Item';
-import { categories } from './data/categories';
+import { ItemProps } from './types/ItemProps';
 import { items } from './data/items';
-import { GetCurrentMonth, FilterListBymonth } from './helpers';
+import { GetCurrentYearAndMonth, FilterListBymonth } from './helpers';
 import { TableArea } from './components/TableArea';
 
 
 export default function App() {
-    const [list, setList] = useState(items);
-    const [filteredList, setFilteredlist] = useState<Item[]>([]);
-    const [currentMonth, setCurrentMonth] = useState(GetCurrentMonth());
+    const [list] = useState(items);
+    const [filteredList, setFilteredlist] = useState<ItemProps[]>([]);
+    const [currentYearAndMonth] = useState(GetCurrentYearAndMonth());
 
     useEffect(() => {
-        setFilteredlist(FilterListBymonth(list, currentMonth));
-    }, [list, currentMonth])
+        setFilteredlist(FilterListBymonth(list, currentYearAndMonth));
+    }, [list, currentYearAndMonth])
 
     return (<>
         <div className="card-body m-12">
@@ -27,7 +24,7 @@ export default function App() {
             </div>
 
             <div className="bg-white rounded mb-9 mt-n1 py-6 px-9">
-                <TableArea list={filteredList} />
+                <TableArea filteredList={filteredList} />
             </div>
         </div>
     </>)
