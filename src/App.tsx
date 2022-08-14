@@ -1,30 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import { ItemProps } from './types/ItemProps';
-import { items } from './data/items';
-import { GetCurrentYearAndMonth, FilterListBymonth } from './helpers';
-import { TableArea } from './components/TableArea';
-
+import { GetCurrentDate, FilterList } from "./helpers"
+import { ItemProps } from "./types/ItemProps";
+import { items } from "./data/items";
+import { Table } from "./components/Table";
 
 export default function App() {
-    const [list] = useState(items);
-    const [filteredList, setFilteredlist] = useState<ItemProps[]>([]);
-    const [currentYearAndMonth] = useState(GetCurrentYearAndMonth());
+    const [list, setList] = useState(items);
+    const [filteredList, setFilteredList] = useState<ItemProps[]>([]);
+    const [currentDate, setCurrentDate] = useState(GetCurrentDate);
 
     useEffect(() => {
-        setFilteredlist(FilterListBymonth(list, currentYearAndMonth));
-    }, [list, currentYearAndMonth])
+        setFilteredList(FilterList(list, currentDate));
+    }, [list, currentDate])
 
     return (<>
         <div className="card-body m-12">
             <div className="rounded-top bg-blue" style={{height: '8rem'}}>
                 <div className="d-flex text-center flex-column text-white pt-8">
-                    <span className="fw-bold fs-3 pt-9">SISTEMA FINANCEIRO</span>
+                    <span className="fw-bold fs-3 pt-3">SISTEMA FINANCEIRO</span>
                 </div>
             </div>
 
             <div className="bg-white rounded mb-9 mt-n1 py-6 px-9">
-                <TableArea filteredList={filteredList} />
+                <Table filteredList={filteredList} />
             </div>
         </div>
     </>)
