@@ -1,34 +1,34 @@
-import { ItemProps } from '../types/ItemProps';
+import { ItemProps } from "../types/ItemProps"
 
 export const items: ItemProps[] = [
     {
         date: new Date(2022, 8, 8),
         category: 'Comida',
-        title: 'açaí',
+        name: 'açaí',
         value: 6.5
     },
     {
-        date: new Date(2022, 8, 9),
+        date: new Date(2022, 8, 8),
         category: 'Pagamento',
-        title: 'salário',
+        name: 'salário',
         value: 800
     },
     {
-        date: new Date(2022, 8, 8),
+        date: new Date(2022, 8, 14),
         category: 'Comida',
-        title: 'Pão de queijo',
+        name: 'Pão de queijo',
         value: 3
     },
     {
-        date: new Date(2022, 8, 12),
+        date: new Date(2022, 8, 25),
         category: 'Pagamento',
-        title: 'Faculdade',
+        name: 'Faculdade',
         value: 183.70
     },
     {
         date: new Date(2022, 9, 17),
         category: 'Contas',
-        title: 'Itaú',
+        name: 'Itaú',
         value: 253.76
     }
 ]

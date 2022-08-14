@@ -1,6 +1,6 @@
 export type CategoryProps = {
     [name: string]: {
-        title: string,
+        name: string,
         color: string,
         expense: boolean
     }
