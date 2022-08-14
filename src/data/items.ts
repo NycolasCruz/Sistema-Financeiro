@@ -1,6 +1,6 @@
-import { Item } from '../types/Item';
+import { ItemProps } from '../types/ItemProps';
 
-export const items: Item[] = [
+export const items: ItemProps[] = [
     {
         date: new Date(2022, 8, 8),
         category: 'Comida',

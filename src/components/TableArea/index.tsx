@@ -1,11 +1,11 @@
 import '../../index.css'
-import { Item } from "../../types/Item"
+import { ItemProps } from "../../types/ItemProps"
 
 type Props = {
-    list: Array<Item>
+    filteredList: Array<ItemProps>
 }
 
-export function TableArea({list}: Props) {
+export function TableArea({ filteredList }: Props) {
     return (<>
         <table className="table">
             <thead>
@@ -18,16 +18,14 @@ export function TableArea({list}: Props) {
                 </tr>
             </thead>
             <tbody>
-                {list.map((item, index) => {
-                    console.log(item)
+                {filteredList.map((item, index) => {
                      return (
                         <tr key={`item-${index}`}>
-                            {/* <td>{index + 1}</td>
+                            <td>{index + 1}</td>
                             <td>09/08/2022</td>
                             <td>{item.category.toUpperCase()}</td>
                             <td>{item.title.toUpperCase()}</td>
-                            <td className="text-end">{`R$${item.value}`}</td> */}
-                            <td>cu</td>
+                            <td className="text-end">{`R$${item.value}`}</td>
                         </tr>
                     )
                 })}

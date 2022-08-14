@@ -1,6 +1,6 @@
-import { Category } from '../types/Category'
+import { CategoryProps } from '../types/CategoryProps'
 
-export const categories: Category = {
+export const categories: CategoryProps = {
     food: {
         title: 'Alimentação',
         color: 'blue',

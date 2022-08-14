@@ -1,22 +1,18 @@
-import { Item } from "../types/Item";
+import { ItemProps } from "../types/ItemProps";
 
-export function GetCurrentMonth() {
+export function GetCurrentYearAndMonth() {
     let currentDate =  new Date();
     return `${currentDate.getFullYear()}-${currentDate.getMonth() + 1}`;
 }
 
-export function FilterListBymonth(list: Array<Item>, date: string): Array<Item> {
-    let newList: Array<Item> = [];
+export function FilterListBymonth(list: Array<ItemProps>, date: string): Array<ItemProps> {
+    let newList: Array<ItemProps> = [];
     let [year, month] = date.split('-');
 
-    for(let índice in list) {
-        if(
-            list[índice].date.getFullYear() === parseInt(year) &&
-            list[índice].date.getMonth() === parseInt(month)
-        ) { 
-            newList.push(newList[índice]);
+    for(let i in list) {
+        if(list[i].date.getFullYear() === parseInt(year) && list[i].date.getMonth() === parseInt(month)) {
+            newList.push(list[i]);
         }
     }
-
     return newList;
 }
