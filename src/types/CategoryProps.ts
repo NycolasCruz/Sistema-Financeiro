@@ -1,4 +1,4 @@
-export type Category = {
+export type CategoryProps = {
     [name: string]: {
         title: string,
         color: string,
