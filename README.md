@@ -1,20 +1,20 @@
-<h1 align="center">Patient List</h1>
+<h1 align="center">Sistema Financeiro</h1>
 
 ## 🚀 Tecnologias
 
 <p>Tela desenvolvida com as seguintes tecnologias:</p>
 
-- VueJS
-- Metronic
+- ReactJS
+- TypeScript
 
 ## 🖥️ Sobre
 
-<p align="justify">A tela tem como principal função fixar meus conhecimentos no framework front-end.</p>
+<p align="justify">O projeto tem como principal função fixar meus conhecimentos no framework front-end.</p>
 
 ## 🔧 Características
 
-- [x] Tela finalizada com o uso de VueJS
-- [x] Utilização do tema Metronic para o desenvolvimento da tela
+- [ ] Projeto Base Finalizado
+- [x] Utilização de tipagens do TypeScript para o desenvolvimento do projeto
 
 ## 🕹️ Instalação
 
@@ -28,7 +28,7 @@ npm install
 
 Pronto! Agora é só ligar o servidor com o comando:
 ````
-npm run serve
+npm start
 ````
 
 ## 🐧 Autor
