@@ -9,11 +9,11 @@ export function Table({ filteredList }: Props) {
         <table className="table">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Nome</th>
-                    <th>Categoria</th>
-                    <th>Data</th>
-                    <th className="text-end mt-10">Valor</th>
+                    <th className="col-1">#</th>
+                    <th className="col-3">Nome</th>
+                    <th className="col-3">Categoria</th>
+                    <th className="col-3">Data</th>
+                    <th className="col-2 mt-10">Custo Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,13 +24,11 @@ export function Table({ filteredList }: Props) {
 
                      return (
                         <tr key={`item-${index}`}>
-                            <td>{index + 1}</td>
-                            <td>{item.name.toUpperCase()}</td>
-                            <td>{item.category.toUpperCase()}</td>
-                            <td>{`
-                                ${currentDay}/${currentMonth}/${currentYear}
-                            `}</td>
-                            <td className="text-end">{`R$${item.value}`}</td>
+                            <td className="col-1">{index + 1}</td>
+                            <td className="col-3">{item.name.toUpperCase()}</td>
+                            <td className="col-3">{item.category.toUpperCase()}</td>
+                            <td className="col-3">{`${currentDay}/${currentMonth}/${currentYear}`}</td>
+                            <td className="col-2">{`R$${item.value}`}</td>
                         </tr>
                     )
                 })}
