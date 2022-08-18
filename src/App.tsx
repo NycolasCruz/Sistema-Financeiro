@@ -6,9 +6,9 @@ import { items } from "./data/items";
 import { Table } from "./components/Table";
 
 export default function App() {
-    const [list, setList] = useState(items);
+    const [list] = useState(items);
     const [filteredList, setFilteredList] = useState<ItemProps[]>([]);
-    const [currentDate, setCurrentDate] = useState(GetCurrentDate);
+    const [currentDate] = useState(GetCurrentDate);
 
     useEffect(() => {
         setFilteredList(FilterList(list, currentDate));
