@@ -9,8 +9,6 @@
 - React Bootstrap
 - React Icons
 - JSON serve
-- Formik
-- Yup
 
 ## 🖥️ Sobre
 
@@ -21,7 +19,6 @@
 - [ ] Projeto Base Finalizado
 - [x] Utilização de tipagens do TypeScript para o desenvolvimento do projeto
 - [ ] Mock feito com JSON serve
-- [ ] Validação dos dados com Formik e Yup
 
 ## 🕹️ Instalação
 
