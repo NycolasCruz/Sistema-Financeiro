@@ -9,26 +9,29 @@ body {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-.h-8 {
-  height: 8rem;
+  monospace;
 }
 
 .bg-blue {
   background-color: #009ef7;
 }
 
+.h-8 {
+  height: 8rem;
+}
+
 .m-12 {
   margin: 3rem !important;
 }
+
 .mt-10 {
   margin-top: 2.5rem !important;
 }
+
 .mb-9 {
   margin-bottom: 2.25rem !important;
 }
+
 .mt-n1 {
   margin-top: -0.25rem !important;
 }
@@ -36,13 +39,16 @@ code {
 .npt-4 {
   padding-top: 1rem !important;
 }
+
 .pt-8 {
   padding-top: 2rem !important;
 }
+
 .px-9 {
   padding-left: 2.25rem !important;
   padding-right: 2.25rem !important;
 }
+
 .py-6 {
   padding-top: 1.5rem !important;
   padding-bottom: 1.5rem !important;
