@@ -9,6 +9,7 @@
 - React Bootstrap
 - React Icons
 - JSON serve
+- Day js
 
 ## 🖥️ Sobre
 
