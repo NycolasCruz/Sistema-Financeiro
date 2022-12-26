@@ -1,6 +1,7 @@
 import Table from 'react-bootstrap/Table';
 
 import { ItemProps } from "../../types/ItemProps";
+import { addZeroToDate } from '../../helpers';
 
 type Props = {
     filteredList: ItemProps[];
@@ -26,14 +27,6 @@ export function FinanceTable({ filteredList }: Props) {
                     const formateddValue = item.value.toLocaleString('pt-BR', {
                         style: 'currency', currency: 'BRL'
                     });
-
-                    function addZeroToDate(date: number) {
-                        if (date < 10) {
-                            return `0${date}`;
-                        }
-
-                        return date;
-                    }
                     
                     function getCurrentDate() {
                         const day = addZeroToDate(currentDay);

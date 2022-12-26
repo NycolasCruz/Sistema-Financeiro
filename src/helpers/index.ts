@@ -20,3 +20,11 @@ export function FilterList(list: ItemProps[] , currentDate: string) {
 
     return newList;
 }
+
+export function addZeroToDate(date: number) {
+    if (date < 10) {
+        return `0${date}`;
+    }
+
+    return date;
+}
