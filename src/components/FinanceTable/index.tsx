@@ -2,9 +2,15 @@ import Table from 'react-bootstrap/Table';
 import dayjs from 'dayjs';
 
 import { ItemProps } from "../../types/ItemProps";
+import { categories } from '../../data/categories';
+import { Categories } from '../../enums/Categories';
 
 type Props = {
     filteredList: ItemProps[];
+}
+
+type CategoryEnum = {
+    1: number;
 }
 
 export function FinanceTable({ filteredList }: Props) {
@@ -25,12 +31,13 @@ export function FinanceTable({ filteredList }: Props) {
                         style: 'currency', currency: 'BRL'
                     });
                     const date = dayjs(item.date).format("DD/MM/YYYY")
+                    const categoryData = categories[Categories[item.category as keyof CategoryEnum]]
 
                      return (
                         <tr key={`item-${index}`}>
                             <td className="col-1">{index + 1}</td>
                             <td className="col-3">{item.name.toUpperCase()}</td>
-                            <td className="col-3">{item.category.toUpperCase()}</td>
+                            <td className="col-3">{categoryData.name.toUpperCase()}</td>
                             <td className="col-3">{date}</td>
                             <td className="col-2">{formateddValue}</td>
                         </tr>

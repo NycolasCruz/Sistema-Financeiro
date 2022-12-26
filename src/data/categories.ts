@@ -1,22 +1,22 @@
 import { CategoryProps } from '../types/CategoryProps'
 
 export const categories: CategoryProps = {
-    food: {
+    1: {
         name: 'Alimentação',
         color: 'blue',
         expense: true
     },
-    payment: {
-        name: 'Pagamento',
+    2: {
+        name: 'Salário',
         color: 'green',
         expense: false
     },
-    college: {
+    3: {
         name: 'Faculdade',
         color: 'gray',
         expense: true
     },
-    card: {
+    4: {
         name: 'Cartão de crédito',
         color: 'orange',
         expense: true

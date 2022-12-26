@@ -1,6 +1,6 @@
 export type ItemProps = {
     date: Date,
-    category: string,
+    category: number,
     name: string,
     value: number
 }
