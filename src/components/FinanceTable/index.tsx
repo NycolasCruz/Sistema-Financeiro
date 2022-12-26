@@ -1,7 +1,7 @@
 import Table from 'react-bootstrap/Table';
+import dayjs from 'dayjs';
 
 import { ItemProps } from "../../types/ItemProps";
-import { addZeroToDate } from '../../helpers';
 
 type Props = {
     filteredList: ItemProps[];
@@ -21,26 +21,17 @@ export function FinanceTable({ filteredList }: Props) {
             </thead>
             <tbody>
                 {filteredList.map((item, index) => {
-                    const currentYear = item.date.getFullYear();
-                    const currentMonth = item.date.getMonth() + 1;
-                    const currentDay = item.date.getDate();
                     const formateddValue = item.value.toLocaleString('pt-BR', {
                         style: 'currency', currency: 'BRL'
                     });
-                    
-                    function getCurrentDate() {
-                        const day = addZeroToDate(currentDay);
-                        const month = addZeroToDate(currentMonth);
-                        
-                        return `${day}/${month}/${currentYear}`;
-                    }
+                    const date = dayjs(item.date).format("DD/MM/YYYY")
 
                      return (
                         <tr key={`item-${index}`}>
                             <td className="col-1">{index + 1}</td>
                             <td className="col-3">{item.name.toUpperCase()}</td>
                             <td className="col-3">{item.category.toUpperCase()}</td>
-                            <td className="col-3">{getCurrentDate()}</td>
+                            <td className="col-3">{date}</td>
                             <td className="col-2">{formateddValue}</td>
                         </tr>
                     )
