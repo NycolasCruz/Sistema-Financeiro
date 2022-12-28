@@ -2,17 +2,18 @@ import { ItemProps } from "../types/ItemProps";
 
 export function GetCurrentDate() {
     const date = new Date();
-    return `${date.getFullYear()}-${date.getMonth()}`
+
+    return `${date.getFullYear()}-${date.getMonth()}`;
 }
 
-export function FilterList(list: ItemProps[] , currentDate: string): ItemProps[] {
-    let newList: ItemProps[] = []
+export function FilterList(list: ItemProps[] , currentDate: string) {
+    let newList = [] as ItemProps[];
     const [year, month] = currentDate.split('-');
 
     list.forEach(item => {
-        const itemDate = item.date
+        const { date } = item
 
-        if(itemDate.getFullYear() === parseInt(year) && itemDate.getMonth() === parseInt(month) + 1) {
+        if(date.getFullYear() === parseInt(year) && date.getMonth() === parseInt(month)) {
             newList.push(item)
         }
     })

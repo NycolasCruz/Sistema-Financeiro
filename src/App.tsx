@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { GetCurrentDate, FilterList } from "./helpers"
 import { ItemProps } from "./types/ItemProps";
 import { items } from "./data/items";
-import { Table } from "./components/Table";
+import { FinanceTable } from "./components/FinanceTable";
 
 export default function App() {
     const [list] = useState(items);
@@ -14,7 +14,7 @@ export default function App() {
         setFilteredList(FilterList(list, currentDate));
     }, [list, currentDate])
 
-    return (<>
+    return (
         <div className="card-body m-12">
             <div className="rounded-top bg-blue h-8">
                 <div className="d-flex text-center flex-column text-white pt-8">
@@ -23,8 +23,8 @@ export default function App() {
             </div>
 
             <div className="bg-white rounded mb-9 mt-n1 py-6 px-9">
-                <Table filteredList={filteredList} />
+                <FinanceTable filteredList={filteredList} />
             </div>
         </div>
-    </>)
+    )
 }
