@@ -28,7 +28,13 @@ export const items: ItemProps[] = [
     {
         date: new Date(2022, 11, 17),
         category: 4,
-        name: 'Itaú',
+        name: 'cartão Itaú',
         value: 253.75
+    },
+    {
+        date: new Date(2022, 11, 17),
+        category: 5,
+        name: 'Fundo imobiliário',
+        value: 780.5
     }
 ]
