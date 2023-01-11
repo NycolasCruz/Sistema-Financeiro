@@ -22,7 +22,7 @@ export function FinanceTable({ filteredList }: Props) {
                     <th className="col-3">Nome</th>
                     <th className="col-3">Categoria</th>
                     <th className="col-3">Data</th>
-                    <th className="col-2">Custo Total</th>
+                    <th className="col-2">Custo</th>
                 </tr>
             </thead>
             <tbody>
