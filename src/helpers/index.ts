@@ -1,9 +1,8 @@
+import dayjs from "dayjs";
 import { ItemProps } from "../types/ItemProps";
 
 export function GetCurrentDate() {
-    const date = new Date();
-
-    return `${date.getFullYear()}-${date.getMonth()}`;
+    return dayjs().format('YYYY-MM')
 }
 
 export function FilterList(list: ItemProps[] , currentDate: string) {
