@@ -6,6 +6,10 @@
 
 - ReactJS
 - TypeScript
+- React Bootstrap
+- React Icons
+- JSON serve
+- Day js
 
 ## 🖥️ Sobre
 
@@ -15,6 +19,7 @@
 
 - [ ] Projeto Base Finalizado
 - [x] Utilização de tipagens do TypeScript para o desenvolvimento do projeto
+- [ ] Mock feito com JSON serve
 
 ## 🕹️ Instalação
 
