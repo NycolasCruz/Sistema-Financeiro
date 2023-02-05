@@ -1,5 +1,5 @@
 export type ItemProps = {
-    date: Date,
+    date: string,
     category: number,
     name: string,
     value: number
