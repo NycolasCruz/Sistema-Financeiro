@@ -6,15 +6,11 @@ export function GetCurrentDate() {
 }
 
 export function FilterList(list: ItemProps[] , currentDate: string) {
-    let newList = [] as ItemProps[];
-    const [year, month] = currentDate.split('-');
+    const newList = list.filter(item => {
+        const [itemYear, itemMonth] = item.date.split('-');
+        const [currentYear, currentMonth] = currentDate.split('-');
 
-    list.forEach(item => {
-        const { date } = item
-
-        if(date.getFullYear() === parseInt(year) && date.getMonth() === parseInt(month)) {
-            newList.push(item)
-        }
+       return (itemYear === currentYear && itemMonth === currentMonth) 
     })
 
     return newList;
