@@ -9,7 +9,7 @@ type Props = {
     filteredList: ItemProps[];
 }
 
-type CategoryEnum = {
+type CategoriesEnum = {
     1: number;
     2: number;
     3: number;
@@ -35,7 +35,7 @@ export function FinanceTable({ filteredList }: Props) {
                         style: 'currency', currency: 'BRL'
                     });
                     const date = dayjs(item.date).format("DD/MM/YYYY")
-                    const category = categories[Categories[item.category as keyof CategoryEnum]]
+                    const category = categories[Categories[item.category as keyof CategoriesEnum]]
                     const colorValue = category.expense ? '#ff0505' : '#02bf02';
 
                      return (
