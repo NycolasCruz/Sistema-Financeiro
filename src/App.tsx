@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
+import dayjs from "dayjs";
 
-import { GetCurrentDate, FilterList } from "./helpers"
+import { FilterList } from "./helpers"
 import { ItemProps } from "./types/ItemProps";
 import { items } from "./data/items";
 import { FinanceTable } from "./components/FinanceTable";
+import { Header } from "./components/Header";
 
 export default function App() {
     const [list] = useState(items);
     const [filteredList, setFilteredList] = useState<ItemProps[]>([]);
-    const [currentDate] = useState(GetCurrentDate);
+    const [currentDate] = useState(dayjs().format('YYYY-MM'));
 
     useEffect(() => {
         setFilteredList(FilterList(list, currentDate));
@@ -23,6 +25,7 @@ export default function App() {
             </div>
 
             <div className="bg-white rounded mb-9 mt-n1 py-6 px-9">
+                <Header currentDate={currentDate}/>
                 <FinanceTable filteredList={filteredList} />
             </div>
         </div>
