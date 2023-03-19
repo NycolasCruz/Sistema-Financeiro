@@ -12,7 +12,7 @@ import { items } from "./data/items";
 export default function App() {
     const [list] = useState(items);
     const [filteredList, setFilteredList] = useState<ItemProps[]>([]);
-    const [currentDate] = useState(dayjs().format("YYYY-MM"));
+    const [currentDate, setCurrentDate] = useState(dayjs().format("YYYY-MM"));
 
     useEffect(() => {
         setFilteredList(FilterList(list, currentDate));
@@ -27,7 +27,7 @@ export default function App() {
             </div>
 
             <div className="bg-white rounded mb-9 mt-n1 py-6 px-9">
-                <Header currentDate={currentDate}/>
+                <Header currentDate={currentDate} setCurrentDate={setCurrentDate} />
                 <FinanceTable filteredList={filteredList} />
             </div>
         </Card.Body>
