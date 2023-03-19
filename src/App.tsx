@@ -22,7 +22,7 @@ export default function App() {
         <Card.Body className="m-12">
             <div className="rounded-top bg-blue h-8">
                 <div className="d-flex text-center flex-column text-white pt-8">
-                    <span className="fw-bold fs-3 npt-4">SISTEMA FINANCEIRO</span>
+                    <span className="fw-bold fs-3 pt-3">SISTEMA FINANCEIRO</span>
                 </div>
             </div>
 
