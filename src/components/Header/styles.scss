@@ -1,0 +1,24 @@
+$text-muted: #787878;
+
+.text-muted {
+    color: $text-muted !important;
+};
+
+.rounded-button {
+    color: $text-muted !important;
+    width: 2rem !important;
+    height: 2rem !important;
+};
+
+.rounded-button:hover {
+    background-color: #eaeaea !important;
+    color: #555 !important;
+};
+
+.fs-17 {
+    font-size: 17px;
+};
+
+.w-10 {
+    width: 10rem;
+};

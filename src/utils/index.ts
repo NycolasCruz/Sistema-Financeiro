@@ -10,3 +10,7 @@ export function FilterList(list: ItemProps[] , currentDate: string) {
 
     return newList;
 }
+
+export function UppercaseFirstLetter(word: string) {
+    return word[0].toUpperCase() + word.slice(1).toLowerCase();
+}
