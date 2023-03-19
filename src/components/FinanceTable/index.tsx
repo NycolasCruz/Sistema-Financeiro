@@ -1,9 +1,10 @@
-import Table from 'react-bootstrap/Table';
-import dayjs from 'dayjs';
+import Table from "react-bootstrap/Table";
+import dayjs from "dayjs";
 
+import { UppercaseFirstLetter } from "../../utils";
+import { Categories } from "../../enums/Categories";
+import { categories } from "../../data/categories";
 import { ItemProps } from "../../types/ItemProps";
-import { categories } from '../../data/categories';
-import { Categories } from '../../enums/Categories';
 
 type Props = {
     filteredList: ItemProps[];
@@ -31,23 +32,23 @@ export function FinanceTable({ filteredList }: Props) {
             </thead>
             <tbody>
                 {filteredList.map((item, index) => {
-                    const formatedValue = item.value.toLocaleString('pt-BR', {
-                        style: 'currency', currency: 'BRL'
+                    const formatedValue = item.value.toLocaleString("pt-BR", {
+                        style: "currency", currency: "BRL"
                     });
                     const date = dayjs(item.date).format("DD/MM/YYYY")
                     const category = categories[Categories[item.category as keyof CategoriesEnum]]
-                    const colorValue = category.expense ? '#ff0505' : '#02bf02';
+                    const colorValue = category.expense ? "#ff0505" : "#02bf02";
 
                      return (
                         <tr key={`item-${index}`}>
                             <td className="col-1">{index + 1}</td>
-                            <td className="col-3">{item.name.toUpperCase()}</td>
+                            <td className="col-3">{UppercaseFirstLetter(item.name)}</td>
                             <td className="col-3 text-white">
                                 <div
                                     className="rounded px-2"
                                     style={{background: category.color, width: "fit-content"}}
                                 >
-                                    {category.name.toUpperCase()}
+                                    {category.name}
                                 </div>
                             </td>
                             <td className="col-3">{date}</td>

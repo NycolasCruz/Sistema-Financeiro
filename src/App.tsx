@@ -3,16 +3,16 @@ import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import dayjs from "dayjs";
 
+import { FilterList } from "./utils"
 import { FinanceTable } from "./components/FinanceTable";
 import { ItemProps } from "./types/ItemProps";
 import { Header } from "./components/Header";
-import { FilterList } from "./helpers"
 import { items } from "./data/items";
 
 export default function App() {
     const [list] = useState(items);
     const [filteredList, setFilteredList] = useState<ItemProps[]>([]);
-    const [currentDate] = useState(dayjs().format('YYYY-MM'));
+    const [currentDate] = useState(dayjs().format("YYYY-MM"));
 
     useEffect(() => {
         setFilteredList(FilterList(list, currentDate));
