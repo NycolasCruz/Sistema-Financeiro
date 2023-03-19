@@ -7,7 +7,7 @@ type Props = {
 export function Header({ currentDate }: Props) {
     const [currentYear, currentMonth] = currentDate.split('-');
     const  date = new Date(Date.UTC(Number(currentYear), Number(currentMonth)));
-    const translatedDate = date.toLocaleDateString('pt-br', {  year: 'numeric', month: 'long' });
+    const translatedDate = date.toLocaleDateString('pt-br', { year: 'numeric', month: 'long' });
 
     return (
         <div>
