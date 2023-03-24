@@ -5,39 +5,39 @@ const month = new Date().getMonth();
 
 export const items: ItemProps[] = [
     {
-        date: dayjs(new Date(2023, month, 8),).format('YYYY-MM-DD'),
+        date: dayjs(new Date(2023, month, 8),).format("YYYY-MM-DD"),
         category: 1,
-        name: 'açaí',
+        name: "açaí",
         value: 7.5
     },
     {
-        date: dayjs(new Date(2023, month, 8)).format('YYYY-MM-DD'),
+        date: dayjs(new Date(2023, month, 8)).format("YYYY-MM-DD"),
         category: 2,
-        name: 'salário',
+        name: "salário",
         value: 1500.55
     },
     {
-        date: dayjs(new Date(2023, month, 14)).format('YYYY-MM-DD'),
+        date: dayjs(new Date(2023, month, 14)).format("YYYY-MM-DD"),
         category: 1,
-        name: 'Pão de queijo',
+        name: "Pão de queijo",
         value: 3
     },
     {
-        date: dayjs(new Date(2023, month, 25)).format('YYYY-MM-DD'),
+        date: dayjs(new Date(2023, month, 25)).format("YYYY-MM-DD"),
         category: 3,
-        name: 'Faculdade',
+        name: "Faculdade",
         value: 183.7
     },
     {
-        date: dayjs(new Date(2023, month, 17)).format('YYYY-MM-DD'),
+        date: dayjs(new Date(2023, month, 17)).format("YYYY-MM-DD"),
         category: 4,
-        name: 'cartão Itaú',
+        name: "cartão Itaú",
         value: 253.75
     },
     {
-        date: dayjs(new Date(2023, month, 17)).format('YYYY-MM-DD'),
+        date: dayjs(new Date(2023, month, 17)).format("YYYY-MM-DD"),
         category: 5,
-        name: 'Fundo imobiliário',
+        name: "Fundo imobiliário",
         value: 780.5
     }
 ];
