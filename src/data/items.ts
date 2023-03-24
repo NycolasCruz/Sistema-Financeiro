@@ -8,7 +8,8 @@ export const items: ItemProps[] = [
         date: dayjs(new Date(2023, month, 8),).format("YYYY-MM-DD"),
         category: 3,
         name: "açaí",
-        value: 7.5
+        value: 7.5,
+        expense: true
     },
     {
         date: dayjs(new Date(2023, month, 8)).format("YYYY-MM-DD"),
@@ -20,24 +21,27 @@ export const items: ItemProps[] = [
         date: dayjs(new Date(2023, month, 14)).format("YYYY-MM-DD"),
         category: 3,
         name: "Pão de queijo",
-        value: 3
+        value: 3,
+        expense: true
     },
     {
         date: dayjs(new Date(2023, month, 25)).format("YYYY-MM-DD"),
         category: 4,
         name: "Faculdade",
-        value: 183.7
+        value: 183.7,
+        expense: true
     },
     {
         date: dayjs(new Date(2023, month, 17)).format("YYYY-MM-DD"),
         category: 5,
         name: "cartão Itaú",
-        value: 253.75
+        value: 253.75,
+        expense: true
     },
     {
         date: dayjs(new Date(2023, month, 17)).format("YYYY-MM-DD"),
-        category: 5,
-        name: "Compras do mês",
+        category: 2,
+        name: "Fundos de investimento",
         value: 780.5
     }
 ];

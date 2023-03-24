@@ -7,21 +7,18 @@ export const categories: CategoryProps = {
     },
     2: {
         name: "Investimentos",
-        color: "#dcd21d"
+        color: "#964b00"
     },
     3: {
         name: "Alimentação",
         color: "#e20e0e",
-        expense: true
     },
     4: {
         name: "Faculdade",
         color: "#67bd13",
-        expense: true
     },
     5: {
         name: "Cartão de crédito",
         color: "#1c56ab",
-        expense: true
     },
 }
