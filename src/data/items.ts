@@ -35,7 +35,7 @@ export const items: ItemProps[] = [
         date: dayjs(new Date(2023, month, 17)).format("YYYY-MM-DD"),
         category: 5,
         name: "cartão Itaú",
-        value: 253.75,
+        value: 2253.75,
         expense: true
     },
     {
