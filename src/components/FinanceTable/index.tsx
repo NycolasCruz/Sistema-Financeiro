@@ -1,21 +1,13 @@
 import Table from "react-bootstrap/Table";
 import dayjs from "dayjs";
 
-import { UppercaseFirstLetter } from "../../utils";
-import { Categories } from "../../enums/Categories";
-import { categories } from "../../data/categories";
 import { ItemProps } from "../../types/ItemProps";
+import { UppercaseFirstLetter } from "../../utils";
+import { CategoriesEnum } from "../../enums/Categories";
+import { categories } from "../../data/categories";
 
 type Props = {
     filteredList: ItemProps[];
-}
-
-type CategoriesEnum = {
-    1: number;
-    2: number;
-    3: number;
-    4: number;
-    5: number;
 }
 
 export function FinanceTable({ filteredList }: Props) {
@@ -36,8 +28,8 @@ export function FinanceTable({ filteredList }: Props) {
                         style: "currency", currency: "BRL"
                     });
                     const date = dayjs(item.date).format("DD/MM/YYYY")
-                    const category = categories[Categories[item.category as keyof CategoriesEnum]]
-                    const colorValue = category.expense ? "#ff0505" : "#02bf02";
+                    const category = categories[CategoriesEnum[item.category]]
+                    const colorValue = item.expense ? "#ff0505" : "#02bf02";
 
                      return (
                         <tr key={`item-${index}`}>

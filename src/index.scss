@@ -1,50 +1,83 @@
+$gray: #787878;
+$blue: #009ef7;
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system,
+	BlinkMacSystemFont,
+	'Segoe UI',
+	'Roboto',
+	'Oxygen',
+	'Ubuntu',
+	'Cantarell',
+	'Fira Sans',
+	'Droid Sans',
+	'Helvetica Neue',
+	sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 };
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+  	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+};
+
+.text-muted {
+    color: $gray !important;
+};
+
+.fs-17 {
+    font-size: 17px;
+};
+
+.w-10 {
+    width: 10rem;
 };
 
 .bg-blue {
-  background-color: #009ef7;
+  	background-color: $blue;
 };
 
-.h-8 {
-  height: 8rem;
+.h-14 {
+  	height: 14rem;
 };
 
-.m-12 {
-  margin: 3rem !important;
+.mt-8 {
+	margin-top: 2rem !important;
 };
 
 .mt-10 {
-  margin-top: 2.5rem !important;
+  	margin-top: 2.5rem !important;
 };
 
 .mb-9 {
-  margin-bottom: 2.25rem !important;
+ 	margin-bottom: 2.25rem !important;
 };
 
-.mt-n1 {
-  margin-top: -0.25rem !important;
+.mt-n25 {
+ 	margin-top: -6.25rem !important;
 };
+
+.mx-12 {
+	margin-left: 3rem !important;
+	margin-right: 3rem !important;
+};
+
+.mx-24 {
+ 	margin-left: 6rem !important;
+ 	margin-right: 6rem !important;
+};			
 
 .pt-8 {
-  padding-top: 2rem !important;
+  	padding-top: 2rem !important;
 };
 
 .px-9 {
-  padding-left: 2.25rem !important;
-  padding-right: 2.25rem !important;
+	padding-left: 2.25rem !important;
+	padding-right: 2.25rem !important;
 };
 
 .py-6 {
-  padding-top: 1.5rem !important;
-  padding-bottom: 1.5rem !important;
+	padding-top: 1.5rem !important;
+	padding-bottom: 1.5rem !important;
 };

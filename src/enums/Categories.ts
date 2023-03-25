@@ -1,15 +1,17 @@
-enum categoriesName {
-    Alimentação = 1,
-    Salário = 2,
-    Faculdade = 3,
-    CartãoDeCrédito = 4,
-    Investimentos = 5
-}
+import { GlobalType } from "../types/GlobalType";
 
-export const Categories = {
-    [categoriesName.Alimentação]: 1,
-    [categoriesName.Salário]: 2,
-    [categoriesName.Faculdade]: 3,
-    [categoriesName.CartãoDeCrédito]: 4,
-    [categoriesName.Investimentos]: 5
-}
+enum categoriesName {
+    Food = 1,
+    Salary = 2,
+    College = 3,
+    Credit_Card = 4,
+    Investments = 5
+};
+
+export const CategoriesEnum: GlobalType = {
+    [categoriesName.Food]: 1,
+    [categoriesName.Salary]: 2,
+    [categoriesName.College]: 3,
+    [categoriesName.Credit_Card]: 4,
+    [categoriesName.Investments]: 5
+};

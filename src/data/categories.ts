@@ -1,27 +1,24 @@
-import { CategoryProps } from '../types/CategoryProps'
+import { CategoryProps } from "../types/CategoryProps"
 
 export const categories: CategoryProps = {
     1: {
-        name: 'Alimentação',
-        color: '#e20e0e',
-        expense: true
+        name: "Salário",
+        color: "#d80f8b"
     },
     2: {
-        name: 'Salário',
-        color: '#d80f8b'
+        name: "Investimentos",
+        color: "#964b00"
     },
     3: {
-        name: 'Faculdade',
-        color: '#67bd13',
-        expense: true
+        name: "Alimentação",
+        color: "#e20e0e",
     },
     4: {
-        name: 'Cartão de crédito',
-        color: '#1c56ab',
-        expense: true
+        name: "Faculdade",
+        color: "#67bd13",
     },
     5: {
-        name: 'Investimentos',
-        color: '#dcd21d'
-    }
+        name: "Cartão de crédito",
+        color: "#1c56ab",
+    },
 }
