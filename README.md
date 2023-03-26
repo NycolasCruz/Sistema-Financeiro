@@ -7,10 +7,11 @@
 - ReactJS
 - TypeScript
 - React Bootstrap
+- React Select
 - React Icons
+- Sweet Alert
 - JSON Server
 - Day js
-- Sweet Alert
 
 ## 🖥️ Sobre
 
