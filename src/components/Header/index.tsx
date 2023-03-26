@@ -84,7 +84,7 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
                 </Button>
             </div>
 
-            <div className="d-flex justify-content-between gap-10 mx-24 w-100">
+            <div className="d-flex justify-content-between gap-10 mx-18 w-100">
                 <div className="d-flex flex-column">
                     <span className="fw-semibold text-muted fs-17">Despesa</span>
                     <span className="fw-bold" style={{color: "#ff0505"}}>
