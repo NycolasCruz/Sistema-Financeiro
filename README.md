@@ -8,8 +8,9 @@
 - TypeScript
 - React Bootstrap
 - React Icons
-- JSON serve
+- JSON Server
 - Day js
+- Sweet Alert
 
 ## 🖥️ Sobre
 
@@ -19,7 +20,7 @@
 
 - [ ] Projeto Base Finalizado
 - [x] Utilização de tipagens do TypeScript para o desenvolvimento do projeto
-- [ ] Mock feito com JSON serve
+- [ ] Simulação de api com JSON serve
 
 ## 🕹️ Instalação
 
