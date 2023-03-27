@@ -83,7 +83,6 @@ export function CreateItemForm() {
 
                         <Form.Group className="form-floating" controlId="description">
                             <Form.Control
-                                type="number"
                                 autoComplete="off"
                                 placeholder="this-placeholder-is-very-necessary"
                             />
