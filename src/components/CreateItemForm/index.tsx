@@ -1,13 +1,13 @@
 import { FormEvent, useState } from "react";
 
 import Button from "react-bootstrap/Button";
-import Modal from 'react-bootstrap/Modal';
-import Form from 'react-bootstrap/Form';
+import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
 import { FaPlus } from "react-icons/fa";
-import Select from 'react-select'
+import Select from "react-select"
 
-import { ReactSelectProps } from "../../types/ReactSelectProps";
-import { categories } from "../../data/categories";
+import { ReactSelectProps } from "@/types/ReactSelectProps";
+import { categories } from "@/data/categories";
 
 export function CreateItemForm() {
     const [isIncome, setIsIncome] = useState(false);

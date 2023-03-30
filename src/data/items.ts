@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
-import { ItemProps } from "../types/ItemProps"
+
+import { ItemProps } from "@/types/ItemProps"
 
 const month = new Date().getMonth();
 

@@ -1,14 +1,12 @@
-import { ItemProps } from "../types/ItemProps";
+import { ItemProps } from "@/types/ItemProps";
 
 export function FilterList(list: ItemProps[] , currentDate: string) {
-    const newList = list.filter(item => {
+    return list.filter(item => {
         const [itemYear, itemMonth] = item.date.split("-");
         const [currentYear, currentMonth] = currentDate.split("-");
 
        return (itemYear === currentYear && itemMonth === currentMonth) 
     })
-
-    return newList;
 }
 
 export function UppercaseFirstLetter(word: string) {

@@ -1,4 +1,4 @@
-import { CategoryProps } from "../types/CategoryProps"
+import { CategoryProps } from "@/types/CategoryProps"
 
 export const categories: CategoryProps[] = [
     {
