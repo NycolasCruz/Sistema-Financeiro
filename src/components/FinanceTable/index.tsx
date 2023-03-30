@@ -3,7 +3,6 @@ import dayjs from "dayjs";
 
 import { ItemProps } from "@/types/ItemProps";
 import { UppercaseFirstLetter } from "@/utils";
-import { CategoriesEnum } from "@/enums/Categories";
 import { categories } from "@/data/categories";
 
 type Props = {
@@ -28,19 +27,19 @@ export function FinanceTable({ filteredList }: Props) {
                         style: "currency", currency: "BRL"
                     });
                     const date = dayjs(item.date).format("DD/MM/YYYY")
-                    const category = categories[CategoriesEnum[item.category]]
+                    const category = categories.find(category => category.id === item.category)
                     const colorValue = item.expense ? "#ff0505" : "#02bf02";
 
-                     return (
+                    return (
                         <tr key={`item-${index}`}>
                             <td className="col-1">{index + 1}</td>
                             <td className="col-3">{UppercaseFirstLetter(item.name)}</td>
                             <td className="col-3 text-white">
                                 <div
                                     className="rounded px-2"
-                                    style={{background: category.color, width: "fit-content"}}
+                                    style={{background: category?.color, width: "fit-content"}}
                                 >
-                                    {category.name}
+                                    {category?.name}
                                 </div>
                             </td>
                             <td className="col-3">{date}</td>

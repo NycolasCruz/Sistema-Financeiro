@@ -22,6 +22,29 @@ code {
   	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 };
 
+.form-control:focus, .form-check-input:focus {
+    border-color: transparent !important;
+    box-shadow: 0 0 0 1px #7066e070;
+};
+
+.form-check-input:checked {
+	background-color: #7066e0 !important;
+	border-color: transparent !important;
+};
+
+.button-purple {
+    background-color: #7066e0 !important;
+};
+
+.button-purple:hover {
+    background-color: #6459dd !important;
+};
+
+.border-footer {
+	border-bottom: 3px solid;
+	border-top: 0;
+};
+
 .text-muted {
     color: $gray !important;
 };
@@ -30,8 +53,16 @@ code {
     font-size: 17px;
 };
 
-.w-10 {
+.w-8 {
+	width: 2rem;
+};
+
+.w-40 {
     width: 10rem;
+};
+
+.h-8 {
+	height: 2rem;
 };
 
 .bg-blue {

@@ -65,19 +65,19 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
             <div  className="d-flex gap-4">
                 <Button
                     variant="none"
-                    className="d-flex justify-content-center align-items-center rounded-circle rounded-button-gray p-0"
+                    className="d-flex justify-content-center align-items-center rounded-circle button-gray w-8 h-8 p-0"
                     onClick={handlePreviousMonth}
                 >
                     <FaChevronLeft />
                 </Button>
 
-                <div className="fw-semibold text-muted fs-17 w-10">
+                <div className="fw-semibold text-muted fs-17 w-40">
                     {UppercaseFirstLetter(translatedDate)}
                 </div>
 
                 <Button
                     variant="none"
-                    className="d-flex justify-content-center align-items-center rounded-circle rounded-button-gray p-0"
+                    className="d-flex justify-content-center align-items-center rounded-circle button-gray w-8 h-8 p-0"
                     onClick={handleNextMonth}
                 >
                     <FaChevronRight />
