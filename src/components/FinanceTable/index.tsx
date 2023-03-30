@@ -1,9 +1,9 @@
 import Table from "react-bootstrap/Table";
 import dayjs from "dayjs";
 
-import { ItemProps } from "../../types/ItemProps";
-import { UppercaseFirstLetter } from "../../utils";
-import { categories } from "../../data/categories";
+import { ItemProps } from "@/types/ItemProps";
+import { UppercaseFirstLetter } from "@/utils";
+import { categories } from "@/data/categories";
 
 type Props = {
     filteredList: ItemProps[];
