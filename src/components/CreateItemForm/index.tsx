@@ -6,6 +6,9 @@ import Form from 'react-bootstrap/Form';
 import { FaPlus } from "react-icons/fa";
 import Select from 'react-select'
 
+import { ReactSelectProps } from "../../types/ReactSelectProps";
+import { categories } from "../../data/categories";
+
 export function CreateItemForm() {
     const [isIncome, setIsIncome] = useState(false);
     const [show, setShow] = useState(false);
@@ -13,11 +16,12 @@ export function CreateItemForm() {
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
 
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' }
-    ]
+    const options: ReactSelectProps[] = categories.map((category) => {
+        return {
+            value: category.name,
+            label: category.name
+        }
+    })
 
     function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -38,7 +42,7 @@ export function CreateItemForm() {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header className="d-flex" closeButton>
-                    <Modal.Title style={{color: isIncome ? "#02bf02" : "#ff0505"}}>
+                    <Modal.Title>
                         {isIncome ? "Adicionar receita" : "Adicionar despesa"}
                     </Modal.Title>
                 </Modal.Header>
@@ -60,7 +64,7 @@ export function CreateItemForm() {
                         </Form.Group>
                         
                         <Select
-                            options={isIncome ? options : options}
+                            options={options}
                             placeholder="Selecione uma categoria"
                             noOptionsMessage={() => "Nenhum resultado encontrado"}
                             components={{

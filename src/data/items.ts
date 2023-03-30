@@ -22,7 +22,6 @@ export const items: ItemProps[] = [
         category: 3,
         name: "Pão de queijo",
         value: 3,
-        expense: true
     },
     {
         date: dayjs(new Date(2023, month, 25)).format("YYYY-MM-DD"),
