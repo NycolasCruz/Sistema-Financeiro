@@ -1,4 +1,5 @@
 import Table from "react-bootstrap/Table";
+import classNames from "clsx";
 import dayjs from "dayjs";
 
 import { ItemProps } from "@/types/ItemProps";
@@ -29,23 +30,21 @@ export function FinanceTable({ filteredList }: Props) {
 					});
 					const date = dayjs(item.date).format("DD/MM/YYYY");
 					const category = categories.find((category) => category.id === item.category);
-					const colorValue = item.expense ? "#ff0505" : "#02bf02";
 
 					return (
 						<tr key={`item-${index}`}>
 							<td className="col-1">{index + 1}</td>
 							<td className="col-3">{UppercaseFirstLetter(item.name)}</td>
 							<td className="col-3 text-white">
-								<div
-									className="rounded px-2"
-									style={{ background: category?.color, width: "fit-content" }}
-								>
+								<div className="rounded fit-content px-2" style={{ background: category?.color }}>
 									{category?.name}
 								</div>
 							</td>
 							<td className="col-3">{date}</td>
 							<td className="col-2">
-								<div style={{ color: colorValue }}>{formattedValue}</div>
+								<div className={classNames(item.expense ? "expense-color" : "income-color")}>
+									{formattedValue}
+								</div>
 							</td>
 						</tr>
 					);

@@ -1,5 +1,7 @@
 $gray: #787878;
 $blue: #009ef7;
+$red: #ff0505;
+$green: #02bf02;
 
 body {
 	margin: 0;
@@ -11,6 +13,26 @@ body {
 
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.expense-color {
+	color: $red;
+}
+
+.expense-border-color {
+	border-color: $red !important;
+}
+
+.income-color {
+	color: $green;
+}
+
+.income-border-color {
+	border-color: $green !important;
+}
+
+.fit-content {
+	width: fit-content;
 }
 
 .form-control:focus,

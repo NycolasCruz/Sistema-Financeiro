@@ -5,6 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { FaPlus } from "react-icons/fa";
 import Select from "react-select";
+import classNames from "clsx";
 
 import { ReactSelectProps } from "@/types/ReactSelectProps";
 import { categories } from "@/data/categories";
@@ -87,8 +88,10 @@ export function CreateItemForm() {
 					</Modal.Body>
 
 					<Modal.Footer
-						className="border-footer border-3px pt-0"
-						style={{ borderColor: isIncome ? "#02bf02" : "#ff0505" }}
+						className={classNames(
+							"border-footer border-3px pt-0",
+							isIncome ? "income-border-color" : "expense-border-color"
+						)}
 					>
 						<Button type="submit" variant="none" className="button-purple text-white">
 							Salvar

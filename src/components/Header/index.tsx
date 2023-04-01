@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 import { ItemProps } from "@/types/ItemProps";
 import { UppercaseFirstLetter } from "@/utils";
 import { CreateItemForm } from "@/components/CreateItemForm";
+import classNames from "clsx";
 
 import "./styles.scss";
 
@@ -61,7 +62,7 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 	}
 
 	useEffect(() => {
-		result < 0 ? setBalanceColor("#ff0505") : setBalanceColor("#02bf02");
+		result < 0 ? setBalanceColor("expense-color") : setBalanceColor("income-color");
 	}, [result]);
 
 	return (
@@ -91,23 +92,17 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 			<div className="d-flex justify-content-between gap-10 mx-18 w-100">
 				<div className="d-flex flex-column">
 					<span className="fw-semibold text-muted fs-17">Despesa</span>
-					<span className="fw-bold" style={{ color: "#ff0505" }}>
-						{handleTotalExpenses()}
-					</span>
+					<span className="fw-bold expense-color">{handleTotalExpenses()}</span>
 				</div>
 
 				<div className="d-flex flex-column">
 					<span className="fw-semibold text-muted fs-17">Receita</span>
-					<span className="fw-bold" style={{ color: "#02bf02" }}>
-						{handleTotalIncome()}
-					</span>
+					<span className="fw-bold income-color">{handleTotalIncome()}</span>
 				</div>
 
 				<div className="d-flex flex-column">
 					<span className="fw-semibold text-muted fs-17">Balanço</span>
-					<span className="fw-bold" style={{ color: balanceColor }}>
-						{handleBalance()}
-					</span>
+					<span className={classNames("fw-bold", balanceColor)}>{handleBalance()}</span>
 				</div>
 			</div>
 
