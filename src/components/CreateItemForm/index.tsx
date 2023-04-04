@@ -10,6 +10,8 @@ import classNames from "clsx";
 import { ReactSelectProps } from "@/types/ReactSelectProps";
 import { categories } from "@/data/categories";
 
+import "./styles.scss";
+
 export function CreateItemForm() {
 	const [isIncome, setIsIncome] = useState(false);
 	const [show, setShow] = useState(false);
@@ -35,7 +37,7 @@ export function CreateItemForm() {
 		<div>
 			<Button
 				variant="none"
-				className="d-flex justify-content-center align-items-center rounded-circle button-purple w-8 h-8 p-0"
+				className="d-flex justify-content-center align-items-center rounded-circle button-success w-8 h-8 p-0"
 				onClick={handleShow}
 			>
 				<FaPlus className="text-white" />

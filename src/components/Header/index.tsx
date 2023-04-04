@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
+import classNames from "clsx";
 import dayjs from "dayjs";
 
 import { ItemProps } from "@/types/ItemProps";
 import { UppercaseFirstLetter } from "@/utils";
 import { CreateItemForm } from "@/components/CreateItemForm";
-import classNames from "clsx";
 
 import "./styles.scss";
 
@@ -24,12 +24,22 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 	const date = new Date(Date.UTC(Number(currentYear), Number(currentMonth)));
 	const translatedDate = date.toLocaleDateString("pt-br", { year: "numeric", month: "long" });
 
+	useEffect(() => {
+		data.map((item) => {
+			const [_, month] = item.date.split("-");
+
+			console.log(month);
+		});
+	}, []);
+
 	const totalExpenses = data
 		.filter((item) => item.expense)
 		.reduce((acc, item) => acc + item.value, 0);
+
 	const totalIncome = data
 		.filter((item) => !item.expense)
 		.reduce((acc, item) => acc + item.value, 0);
+
 	const result = totalIncome - totalExpenses;
 
 	function handlePreviousMonth() {
@@ -47,7 +57,7 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 		});
 	}
 
-	function handleTotalIncome() {
+	function handleTotalIncomes() {
 		return totalIncome.toLocaleString("pt-br", {
 			style: "currency",
 			currency: "BRL"
@@ -97,11 +107,11 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 
 				<div className="d-flex flex-column">
 					<span className="fw-semibold text-muted fs-17">Receita</span>
-					<span className="fw-bold income-color">{handleTotalIncome()}</span>
+					<span className="fw-bold income-color">{handleTotalIncomes()}</span>
 				</div>
 
 				<div className="d-flex flex-column">
-					<span className="fw-semibold text-muted fs-17">Balanço</span>
+					<span className="fw-semibold text-muted fs-17">Saldo</span>
 					<span className={classNames("fw-bold", balanceColor)}>{handleBalance()}</span>
 				</div>
 			</div>

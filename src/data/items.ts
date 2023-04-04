@@ -43,5 +43,25 @@ export const items: ItemProps[] = [
 		category: 2,
 		name: "Fundos de investimento",
 		value: 780.5
+	},
+	{
+		date: dayjs(new Date(2023, month + 1, 25)).format("YYYY-MM-DD"),
+		category: 4,
+		name: "Faculdade",
+		value: 183.7,
+		expense: true
+	},
+	{
+		date: dayjs(new Date(2023, month + 1, 17)).format("YYYY-MM-DD"),
+		category: 5,
+		name: "cartão Itaú",
+		value: 2253.75,
+		expense: true
+	},
+	{
+		date: dayjs(new Date(2023, month + 1, 17)).format("YYYY-MM-DD"),
+		category: 2,
+		name: "Fundos de investimento",
+		value: 780.5
 	}
 ];
