@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
+import classNames from "clsx";
 import dayjs from "dayjs";
 
 import { ItemProps } from "@/types/ItemProps";
 import { UppercaseFirstLetter } from "@/utils";
 import { CreateItemForm } from "@/components/CreateItemForm";
-import classNames from "clsx";
 
 import "./styles.scss";
 
@@ -24,13 +24,23 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 	const date = new Date(Date.UTC(Number(currentYear), Number(currentMonth)));
 	const translatedDate = date.toLocaleDateString("pt-br", { year: "numeric", month: "long" });
 
-	const totalExpenses = data
-		.filter((item) => item.expense)
-		.reduce((acc, item) => acc + item.value, 0);
-	const totalIncome = data
-		.filter((item) => !item.expense)
-		.reduce((acc, item) => acc + item.value, 0);
-	const result = totalIncome - totalExpenses;
+	function calculateExpenseOrBalanceForTheMonth(isExpense?: boolean) {
+		return data
+			.filter((item) => {
+				const [, month] = item.date.split("-");
+
+				if (month == currentMonth) {
+					return isExpense ? item.expense : !item.expense;
+				}
+			})
+			.reduce((acc, item) => acc + item.value, 0);
+	}
+
+	const Expenses = calculateExpenseOrBalanceForTheMonth(true);
+
+	const Incomes = calculateExpenseOrBalanceForTheMonth();
+
+	const result = Incomes - Expenses;
 
 	function handlePreviousMonth() {
 		setCurrentDate(dayjs(currentDate).subtract(1, "month").format("YYYY-MM"));
@@ -40,15 +50,15 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 		setCurrentDate(dayjs(currentDate).add(1, "month").format("YYYY-MM"));
 	}
 
-	function handleTotalExpenses() {
-		return totalExpenses.toLocaleString("pt-br", {
+	function handleExpenses() {
+		return Expenses.toLocaleString("pt-br", {
 			style: "currency",
 			currency: "BRL"
 		});
 	}
 
-	function handleTotalIncome() {
-		return totalIncome.toLocaleString("pt-br", {
+	function handleIncomes() {
+		return Incomes.toLocaleString("pt-br", {
 			style: "currency",
 			currency: "BRL"
 		});
@@ -92,16 +102,16 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 			<div className="d-flex justify-content-between gap-10 mx-18 w-100">
 				<div className="d-flex flex-column">
 					<span className="fw-semibold text-muted fs-17">Despesa</span>
-					<span className="fw-bold expense-color">{handleTotalExpenses()}</span>
+					<span className="fw-bold expense-color">{handleExpenses()}</span>
 				</div>
 
 				<div className="d-flex flex-column">
 					<span className="fw-semibold text-muted fs-17">Receita</span>
-					<span className="fw-bold income-color">{handleTotalIncome()}</span>
+					<span className="fw-bold income-color">{handleIncomes()}</span>
 				</div>
 
 				<div className="d-flex flex-column">
-					<span className="fw-semibold text-muted fs-17">Balanço</span>
+					<span className="fw-semibold text-muted fs-17">Saldo</span>
 					<span className={classNames("fw-bold", balanceColor)}>{handleBalance()}</span>
 				</div>
 			</div>

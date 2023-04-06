@@ -2,6 +2,8 @@ $gray: #787878;
 $blue: #009ef7;
 $red: #ff0505;
 $green: #02bf02;
+$purple: #7066e0;
+$opaque-purple: #7066e070;
 
 body {
 	margin: 0;
@@ -19,44 +21,23 @@ code {
 	color: $red;
 }
 
-.expense-border-color {
-	border-color: $red !important;
-}
-
 .income-color {
 	color: $green;
-}
-
-.income-border-color {
-	border-color: $green !important;
-}
-
-.fit-content {
-	width: fit-content;
 }
 
 .form-control:focus,
 .form-check-input:focus {
 	border-color: transparent !important;
-	box-shadow: 0 0 0 1px #7066e070;
+	box-shadow: 0 0 0 1px $opaque-purple;
 }
 
 .form-check-input:checked {
-	background-color: #7066e0 !important;
+	background-color: $purple !important;
 	border-color: transparent !important;
 }
 
-.button-purple {
-	background-color: #7066e0 !important;
-}
-
-.button-purple:hover {
-	background-color: #6459dd !important;
-}
-
-.border-footer {
-	border-bottom: 3px solid;
-	border-top: 0;
+.fit-content {
+	width: fit-content;
 }
 
 .text-muted {

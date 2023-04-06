@@ -10,6 +10,8 @@ import classNames from "clsx";
 import { ReactSelectProps } from "@/types/ReactSelectProps";
 import { categories } from "@/data/categories";
 
+import "./styles.scss";
+
 export function CreateItemForm() {
 	const [isIncome, setIsIncome] = useState(false);
 	const [show, setShow] = useState(false);
@@ -32,10 +34,10 @@ export function CreateItemForm() {
 
 	return (
 		// needs to be a div to keep button formatting
-		<div>
+		<div className="pe-2">
 			<Button
 				variant="none"
-				className="d-flex justify-content-center align-items-center rounded-circle button-purple w-8 h-8 p-0"
+				className="d-flex justify-content-center align-items-center rounded-circle button-success w-8 h-8 p-0"
 				onClick={handleShow}
 			>
 				<FaPlus className="text-white" />
@@ -43,7 +45,9 @@ export function CreateItemForm() {
 
 			<Modal show={show} onHide={handleClose}>
 				<Modal.Header className="d-flex" closeButton>
-					<Modal.Title>{isIncome ? "Adicionar receita" : "Adicionar despesa"}</Modal.Title>
+					<Modal.Title className={classNames(isIncome ? "income-color" : "expense-color")}>
+						{isIncome ? "Adicionar receita" : "Adicionar despesa"}
+					</Modal.Title>
 				</Modal.Header>
 
 				<Form onSubmit={handleSubmit}>
@@ -87,12 +91,7 @@ export function CreateItemForm() {
 						</Form.Group>
 					</Modal.Body>
 
-					<Modal.Footer
-						className={classNames(
-							"border-footer border-3px pt-0",
-							isIncome ? "income-border-color" : "expense-border-color"
-						)}
-					>
+					<Modal.Footer className="border-0 pt-0">
 						<Button type="submit" variant="none" className="button-purple text-white">
 							Salvar
 						</Button>

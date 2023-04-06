@@ -10,13 +10,13 @@ import { Header } from "./components/Header";
 import { items } from "./data/items";
 
 export default function App() {
-	const [list] = useState(items);
+	const [data] = useState(items);
 	const [filteredList, setFilteredList] = useState<ItemProps[]>([]);
 	const [currentDate, setCurrentDate] = useState(dayjs().format("YYYY-MM"));
 
 	useEffect(() => {
-		setFilteredList(FilterList(list, currentDate));
-	}, [list, currentDate]);
+		setFilteredList(FilterList(data, currentDate));
+	}, [data, currentDate]);
 
 	return (
 		<Card.Body className="mt-8 mx-12 mb-12">
@@ -27,7 +27,7 @@ export default function App() {
 			</div>
 
 			<div className="d-flex flex-column bg-white rounded shadow gap-3 mb-9 mx-5 mt-n25 py-6 px-9">
-				<Header currentDate={currentDate} setCurrentDate={setCurrentDate} data={list} />
+				<Header currentDate={currentDate} setCurrentDate={setCurrentDate} data={data} />
 				<FinanceTable filteredList={filteredList} />
 			</div>
 		</Card.Body>
