@@ -24,23 +24,23 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 	const date = new Date(Date.UTC(Number(currentYear), Number(currentMonth)));
 	const translatedDate = date.toLocaleDateString("pt-br", { year: "numeric", month: "long" });
 
-	useEffect(() => {
-		data.map((item) => {
-			const [, month] = item.date.split("-");
+	function calculateExpenseOrBalanceForTheMonth(isExpense?: boolean) {
+		return data
+			.filter((item) => {
+				const [, month] = item.date.split("-");
 
-			console.log(month);
-		});
-	}, []);
+				if (month == currentMonth) {
+					return isExpense ? item.expense : !item.expense;
+				}
+			})
+			.reduce((acc, item) => acc + item.value, 0);
+	}
 
-	const totalExpenses = data
-		.filter((item) => item.expense)
-		.reduce((acc, item) => acc + item.value, 0);
+	const Expenses = calculateExpenseOrBalanceForTheMonth(true);
 
-	const totalIncome = data
-		.filter((item) => !item.expense)
-		.reduce((acc, item) => acc + item.value, 0);
+	const Incomes = calculateExpenseOrBalanceForTheMonth();
 
-	const result = totalIncome - totalExpenses;
+	const result = Incomes - Expenses;
 
 	function handlePreviousMonth() {
 		setCurrentDate(dayjs(currentDate).subtract(1, "month").format("YYYY-MM"));
@@ -50,15 +50,15 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 		setCurrentDate(dayjs(currentDate).add(1, "month").format("YYYY-MM"));
 	}
 
-	function handleTotalExpenses() {
-		return totalExpenses.toLocaleString("pt-br", {
+	function handleExpenses() {
+		return Expenses.toLocaleString("pt-br", {
 			style: "currency",
 			currency: "BRL"
 		});
 	}
 
-	function handleTotalIncomes() {
-		return totalIncome.toLocaleString("pt-br", {
+	function handleIncomes() {
+		return Incomes.toLocaleString("pt-br", {
 			style: "currency",
 			currency: "BRL"
 		});
@@ -102,12 +102,12 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 			<div className="d-flex justify-content-between gap-10 mx-18 w-100">
 				<div className="d-flex flex-column">
 					<span className="fw-semibold text-muted fs-17">Despesa</span>
-					<span className="fw-bold expense-color">{handleTotalExpenses()}</span>
+					<span className="fw-bold expense-color">{handleExpenses()}</span>
 				</div>
 
 				<div className="d-flex flex-column">
 					<span className="fw-semibold text-muted fs-17">Receita</span>
-					<span className="fw-bold income-color">{handleTotalIncomes()}</span>
+					<span className="fw-bold income-color">{handleIncomes()}</span>
 				</div>
 
 				<div className="d-flex flex-column">
