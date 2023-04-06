@@ -26,7 +26,7 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 
 	useEffect(() => {
 		data.map((item) => {
-			const [_, month] = item.date.split("-");
+			const [, month] = item.date.split("-");
 
 			console.log(month);
 		});
