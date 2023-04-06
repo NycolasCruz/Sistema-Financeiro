@@ -49,7 +49,7 @@ export function FinanceTable({ filteredList }: Props) {
 									{formattedValue}
 								</div>
 							</td>
-							<td className="d-flex justify-content-center">
+							<td className="d-flex justify-content-end">
 								<Button
 									variant="danger"
 									className="d-flex justify-content-center align-items-center rounded-circle w-8 h-8 p-0"

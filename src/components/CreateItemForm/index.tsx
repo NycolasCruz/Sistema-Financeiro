@@ -34,7 +34,7 @@ export function CreateItemForm() {
 
 	return (
 		// needs to be a div to keep button formatting
-		<div>
+		<div className="pe-2">
 			<Button
 				variant="none"
 				className="d-flex justify-content-center align-items-center rounded-circle button-success w-8 h-8 p-0"
