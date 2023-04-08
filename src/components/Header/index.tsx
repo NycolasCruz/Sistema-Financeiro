@@ -116,7 +116,7 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 				</div>
 			</div>
 
-			<CreateItemForm />
+			<CreateItemForm currentDate={currentDate} />
 		</div>
 	);
 }

@@ -7,27 +7,47 @@ import { FaPlus } from "react-icons/fa";
 import Select from "react-select";
 import classNames from "clsx";
 
+import { useData } from "@/hooks/useData";
 import { ReactSelectProps } from "@/types/ReactSelectProps";
 import { categories } from "@/data/categories";
 
 import "./styles.scss";
 
-export function CreateItemForm() {
+type Props = {
+	currentDate: string;
+};
+
+export function CreateItemForm({ currentDate }: Props) {
 	const [isIncome, setIsIncome] = useState(false);
 	const [show, setShow] = useState(false);
+	const [selectedCategory, setSelectedCategory] = useState(0);
+	const { data, setData } = useData();
 
 	const handleShow = () => setShow(true);
 	const handleClose = () => setShow(false);
 
 	const options: ReactSelectProps[] = categories.map((category) => {
 		return {
-			value: category.name,
+			value: category.id,
 			label: category.name
 		};
 	});
 
 	function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
+
+		const formData = new FormData(event.currentTarget);
+
+		setData([
+			...data,
+			{
+				date: currentDate,
+				category: selectedCategory,
+				name: String(formData?.get("description")),
+				value: Number(formData.get("value")),
+				expense: !isIncome
+			}
+		]);
 
 		handleClose();
 	}
@@ -59,7 +79,11 @@ export function CreateItemForm() {
 						/>
 
 						<Form.Group className="form-floating" controlId="description">
-							<Form.Control autoComplete="off" placeholder="this-placeholder-is-very-necessary" />
+							<Form.Control
+								name="description"
+								autoComplete="off"
+								placeholder="this-placeholder-is-very-necessary"
+							/>
 							<Form.Label>Adicione uma descrição</Form.Label>
 						</Form.Group>
 
@@ -70,6 +94,7 @@ export function CreateItemForm() {
 							components={{
 								IndicatorSeparator: null
 							}}
+							onChange={(category) => setSelectedCategory(category?.value || 0)}
 							styles={{
 								control: (baseStyles) => ({
 									...baseStyles,
@@ -86,7 +111,11 @@ export function CreateItemForm() {
 						/>
 
 						<Form.Group className="form-floating" controlId="description">
-							<Form.Control autoComplete="off" placeholder="this-placeholder-is-very-necessary" />
+							<Form.Control
+								name="value"
+								autoComplete="off"
+								placeholder="this-placeholder-is-very-necessary"
+							/>
 							<Form.Label>Digite o valor</Form.Label>
 						</Form.Group>
 					</Modal.Body>
