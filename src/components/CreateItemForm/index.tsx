@@ -8,8 +8,9 @@ import Select from "react-select";
 import classNames from "clsx";
 
 import { useData } from "@/hooks/useData";
-import { ReactSelectProps } from "@/types/ReactSelectProps";
 import { categories } from "@/data/categories";
+import { ReactSelectProps } from "@/types/ReactSelectProps";
+import { MaskedFormControl } from "@/components/MaskedFormControl";
 
 import "./styles.scss";
 
@@ -40,14 +41,16 @@ export function CreateItemForm({ currentDate }: Props) {
 		event.preventDefault();
 
 		const formData = new FormData(event.currentTarget);
+		const description = String(formData.get("description"));
+		const value = Number(String(formData.get("value")).replace(",", "."));
 
 		setData([
 			...data,
 			{
 				date: currentDate,
 				category: selectedCategory,
-				name: String(formData?.get("description")),
-				value: Number(formData.get("value")),
+				name: description,
+				value: value,
 				expense: !isIncome
 			}
 		]);
@@ -120,7 +123,13 @@ export function CreateItemForm({ currentDate }: Props) {
 
 						<Form.Group controlId="value">
 							<Form.Label>Digite o valor</Form.Label>
-							<Form.Control name="value" autoComplete="off" placeholder="Digite o valor" required />
+							<MaskedFormControl
+								mask={Number}
+								name="value"
+								placeholder="Digite o valor"
+								autoComplete="off"
+								required
+							/>
 						</Form.Group>
 					</Modal.Body>
 
