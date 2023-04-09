@@ -1,9 +1,20 @@
-.rounded-button-purple {
-    background-color: #7066e0 !important;
-    width: 2rem !important;
-    height: 2rem !important;
-};
+$green-water: #47be7d;
+$active-green-water: #50cd89;
+$purple: #7066e0;
+$active-purple: #6459dd;
 
-.rounded-button-purple:hover {
-    background-color: #6459dd !important;
-};
+.button-purple {
+	background-color: $purple !important;
+}
+
+.button-purple:hover {
+	background-color: $active-purple !important;
+}
+
+.button-success {
+	background-color: $green-water !important;
+}
+
+.button-success:hover {
+	background-color: $active-green-water !important;
+}
