@@ -18,9 +18,12 @@ type Props = {
 };
 
 export function CreateItemForm({ currentDate }: Props) {
+	const INITIAL_CATEGORY_IF_NO_OTHER_IS_SELECTED = 1;
 	const [isIncome, setIsIncome] = useState(false);
 	const [show, setShow] = useState(false);
-	const [selectedCategory, setSelectedCategory] = useState(0);
+	const [selectedCategory, setSelectedCategory] = useState(
+		INITIAL_CATEGORY_IF_NO_OTHER_IS_SELECTED
+	);
 	const { data, setData } = useData();
 
 	const handleShow = () => setShow(true);
@@ -78,45 +81,46 @@ export function CreateItemForm({ currentDate }: Props) {
 							onClick={(event) => setIsIncome(event.currentTarget.checked)}
 						/>
 
-						<Form.Group className="form-floating" controlId="description">
+						<Form.Group controlId="description">
+							<Form.Label>Adicione uma descrição</Form.Label>
 							<Form.Control
 								name="description"
+								placeholder="Adicione uma descrição"
 								autoComplete="off"
-								placeholder="this-placeholder-is-very-necessary"
+								required
 							/>
-							<Form.Label>Adicione uma descrição</Form.Label>
 						</Form.Group>
 
-						<Select
-							options={options}
-							placeholder="Selecione uma categoria"
-							noOptionsMessage={() => "Nenhum resultado encontrado"}
-							components={{
-								IndicatorSeparator: null
-							}}
-							onChange={(category) => setSelectedCategory(category?.value || 0)}
-							styles={{
-								control: (baseStyles) => ({
-									...baseStyles,
-									borderColor: "#dee2e6"
-								})
-							}}
-							theme={(theme) => ({
-								...theme,
-								colors: {
-									...theme.colors,
-									primary: "#7066e070"
-								}
-							})}
-						/>
-
-						<Form.Group className="form-floating" controlId="description">
-							<Form.Control
-								name="value"
-								autoComplete="off"
-								placeholder="this-placeholder-is-very-necessary"
+						<div>
+							<Form.Label htmlFor="category">Selecione uma categoria</Form.Label>
+							<Select
+								inputId="category"
+								noOptionsMessage={() => "Nenhum resultado encontrado"}
+								options={options}
+								defaultValue={options[0]}
+								onChange={(category) => setSelectedCategory(Number(category?.value))}
+								components={{
+									IndicatorSeparator: null
+								}}
+								styles={{
+									control: (baseStyles) => ({
+										...baseStyles,
+										borderColor: "#dee2e6"
+									})
+								}}
+								theme={(theme) => ({
+									...theme,
+									colors: {
+										...theme.colors,
+										primary: "#7066e070"
+									}
+								})}
 							/>
+						</div>
+
+						<Form.Group controlId="value">
 							<Form.Label>Digite o valor</Form.Label>
+							<Form.Control name="value" autoComplete="off" placeholder="Digite o valor" required />
 						</Form.Group>
 					</Modal.Body>
 
