@@ -13,6 +13,7 @@ import { ReactSelectProps } from "@/types/ReactSelectProps";
 import { MaskedFormControl } from "@/components/MaskedFormControl";
 
 import "./styles.scss";
+import { Toast } from "@/utils/mixins/toast";
 
 type Props = {
 	currentDate: string;
@@ -56,8 +57,12 @@ export function CreateItemForm({ currentDate }: Props) {
 			]);
 
 			handleClose();
+
+			Toast.fire({ icon: "success", title: "Item adicionado com sucesso!" });
 		} catch (error) {
 			console.error(error);
+
+			Toast.fire({ icon: "error", title: "Erro ao adicionar item!" });
 		}
 	}
 
