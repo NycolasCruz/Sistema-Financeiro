@@ -38,24 +38,27 @@ export function CreateItemForm({ currentDate }: Props) {
 	});
 
 	function handleSubmit(event: FormEvent<HTMLFormElement>) {
-		event.preventDefault();
+		try {
+			event.preventDefault();
+			const formData = new FormData(event.currentTarget);
+			const description = String(formData.get("description"));
+			const value = Number(String(formData.get("value")).replace(",", "."));
 
-		const formData = new FormData(event.currentTarget);
-		const description = String(formData.get("description"));
-		const value = Number(String(formData.get("value")).replace(",", "."));
+			setData([
+				...data,
+				{
+					date: currentDate,
+					category: selectedCategory,
+					name: description,
+					value: value,
+					expense: !isIncome
+				}
+			]);
 
-		setData([
-			...data,
-			{
-				date: currentDate,
-				category: selectedCategory,
-				name: description,
-				value: value,
-				expense: !isIncome
-			}
-		]);
-
-		handleClose();
+			handleClose();
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 	return (
