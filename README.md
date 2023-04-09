@@ -21,7 +21,7 @@
 
 ## 🔧 Características
 
-- [ ] Projeto Base Finalizado
+- [x] Projeto Base Finalizado
 - [x] Utilização de tipagens do TypeScript para o desenvolvimento do projeto
 - [ ] Simulação de api com JSON serve
 - [x] Fomatação de código com Prettier
