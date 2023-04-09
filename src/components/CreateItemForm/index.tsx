@@ -13,6 +13,7 @@ import { ReactSelectProps } from "@/types/ReactSelectProps";
 import { MaskedFormControl } from "@/components/MaskedFormControl";
 
 import "./styles.scss";
+import { Toast } from "@/utils/mixins/toast";
 
 type Props = {
 	currentDate: string;
@@ -38,24 +39,31 @@ export function CreateItemForm({ currentDate }: Props) {
 	});
 
 	function handleSubmit(event: FormEvent<HTMLFormElement>) {
-		event.preventDefault();
+		try {
+			event.preventDefault();
+			const formData = new FormData(event.currentTarget);
+			const description = String(formData.get("description"));
+			const value = Number(String(formData.get("value")).replace(",", "."));
 
-		const formData = new FormData(event.currentTarget);
-		const description = String(formData.get("description"));
-		const value = Number(String(formData.get("value")).replace(",", "."));
+			setData([
+				...data,
+				{
+					date: currentDate,
+					category: selectedCategory,
+					name: description,
+					value: value,
+					expense: !isIncome
+				}
+			]);
 
-		setData([
-			...data,
-			{
-				date: currentDate,
-				category: selectedCategory,
-				name: description,
-				value: value,
-				expense: !isIncome
-			}
-		]);
+			handleClose();
 
-		handleClose();
+			Toast.fire({ icon: "success", title: "Item adicionado com sucesso!" });
+		} catch (error) {
+			console.error(error);
+
+			Toast.fire({ icon: "error", title: "Erro ao adicionar item!" });
+		}
 	}
 
 	return (
