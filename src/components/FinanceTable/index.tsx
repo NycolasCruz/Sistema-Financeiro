@@ -35,7 +35,7 @@ export function FinanceTable({ filteredList }: Props) {
 					const category = categories.find((category) => category.id === item.category);
 
 					return (
-						<tr key={`item-${index}`}>
+						<tr className="align-middle" key={`item-${index}`}>
 							<td className="col-1">{index + 1}</td>
 							<td className="col-3">{UppercaseFirstLetter(item.name)}</td>
 							<td className="col-3 text-white">
