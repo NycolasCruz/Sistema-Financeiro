@@ -18,7 +18,7 @@
 
 ## 🖥️ Sobre
 
-<p align="justify">O projeto tem como principal função fixar meus conhecimentos sobre o React.</p>
+<p align="justify">O projeto tem como principal gerenciar as receitas e os gastos de um usuário, gerando um balaço de gastos por mês e auxiliando no controle e  aducação financeira.</p>
 
 ## 🔧 Características
 
