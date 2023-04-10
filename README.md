@@ -17,7 +17,7 @@
 
 ## 🖥️ Sobre
 
-<p align="justify">O projeto tem como principal função fixar meus conhecimentos no framework front-end.</p>
+<p align="justify">O projeto tem como principal função fixar meus conhecimentos sobre o React.</p>
 
 ## 🔧 Características
 
