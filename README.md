@@ -31,9 +31,11 @@
 
 Certifique-se de ter o NodeJS instalado na sua máquina, caso não tenha, instale seu executável clicando neste <a href="https://nodejs.org/pt-br/download/">link.</a>
 
-Instale também o Yarn, caso não tenha, instale com o comando ````npm install --global yarn````, em seguida clone o projeto.
+Instale também o Yarn, caso não tenha, instale com o comando ````npm install --global yarn````.
 
-Utilize o comando ````yarn```` para instalar os pacotes necessários:
+Em seguida clone o projeto.
+
+Com seu terminal aberto, utilize o comando ````yarn```` para instalar os pacotes necessários.
 
 Pronto! Agora é só ligar o servidor com o comando:
 ````
