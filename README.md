@@ -4,8 +4,9 @@
 
 <p>Projeto desenvolvido com as seguintes tecnologias:</p>
 
-- ReactJS
+- React
 - TypeScript
+- Bootstrap
 - React Bootstrap
 - React Select
 - React Icons
