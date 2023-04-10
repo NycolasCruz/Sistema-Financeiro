@@ -30,7 +30,7 @@
 
 ## 🕹️ Instalação
 
-Certifique-se de ter o NodeJS instalado na sua máquina, caso não tenha, instale seu executável clicando neste <a href="https://nodejs.org/pt-br/download/">link.</a>
+Certifique-se de ter o NodeJS instalado na sua máquina, caso não tenha, instale seu executável clicando neste <a href="https://nodejs.org/pt-br/download/">link</a>.
 
 Instale também o Yarn, caso não tenha, instale com o comando ````npm install --global yarn````.
 
