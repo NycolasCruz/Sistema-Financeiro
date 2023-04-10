@@ -2,7 +2,7 @@
 
 ## 🚀 Tecnologias
 
-<p>Tela desenvolvida com as seguintes tecnologias:</p>
+<p>Projeto desenvolvido com as seguintes tecnologias:</p>
 
 - ReactJS
 - TypeScript
