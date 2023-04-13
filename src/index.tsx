@@ -7,7 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import { DataContextProvider } from "./contexts/DataContext";
 import App from "./App";
 
-import "./index.scss";
+import "./global.scss";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
