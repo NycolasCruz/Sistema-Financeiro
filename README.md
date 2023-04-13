@@ -27,6 +27,7 @@
 - [ ] Simulação de api com JSON serve
 - [x] Fomatação de código com Prettier
 - [x] Análise de erros com ESLint
+- [ ] Botão de excluir item
 
 ## 🕹️ Instalação
 
