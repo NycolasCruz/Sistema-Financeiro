@@ -6,15 +6,15 @@ import Form from "react-bootstrap/Form";
 import { FaPlus } from "react-icons/fa";
 import Select from "react-select";
 import classNames from "clsx";
+import axios from "axios";
 
-import { useData } from "@/hooks/useData";
 import { getCategories } from "@/helpers";
 import { Toast } from "@/utils/mixins/toast";
+import { CategoryProps } from "@/types/CategoryProps";
 import { ReactSelectProps } from "@/types/ReactSelectProps";
 import { MaskedFormControl } from "@/components/MaskedFormControl";
 
 import "./styles.scss";
-import { CategoryProps } from "@/types/CategoryProps";
 
 type Props = {
 	currentDate: string;
@@ -28,7 +28,6 @@ export function CreateItemForm({ currentDate }: Props) {
 		INITIAL_CATEGORY_IF_NO_OTHER_IS_SELECTED
 	);
 	const [categories, setCategories] = useState<CategoryProps[]>([]);
-	const { data, setData } = useData();
 	const ref = useRef(true);
 
 	const handleShow = () => setShow(true);
@@ -40,6 +39,31 @@ export function CreateItemForm({ currentDate }: Props) {
 			label: category.name
 		};
 	});
+
+	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+		try {
+			event.preventDefault();
+			const formData = new FormData(event.currentTarget);
+			const description = String(formData.get("description"));
+			const value = Number(String(formData.get("value")).replace(",", "."));
+
+			await axios.post("http://localhost:3001/projects", {
+				date: currentDate,
+				category: selectedCategory,
+				name: description,
+				value: value,
+				expense: !isIncome
+			});
+
+			handleClose();
+
+			Toast.fire({ icon: "success", title: "Item adicionado com sucesso!" });
+		} catch (error) {
+			console.error(error);
+
+			Toast.fire({ icon: "error", title: "Erro ao adicionar item!" });
+		}
+	}
 
 	useEffect(() => {
 		if (ref.current) {
@@ -54,34 +78,6 @@ export function CreateItemForm({ currentDate }: Props) {
 
 		fetchCategories();
 	}, []);
-
-	function handleSubmit(event: FormEvent<HTMLFormElement>) {
-		try {
-			event.preventDefault();
-			const formData = new FormData(event.currentTarget);
-			const description = String(formData.get("description"));
-			const value = Number(String(formData.get("value")).replace(",", "."));
-
-			setData([
-				...data,
-				{
-					date: currentDate,
-					category: selectedCategory,
-					name: description,
-					value: value,
-					expense: !isIncome
-				}
-			]);
-
-			handleClose();
-
-			Toast.fire({ icon: "success", title: "Item adicionado com sucesso!" });
-		} catch (error) {
-			console.error(error);
-
-			Toast.fire({ icon: "error", title: "Erro ao adicionar item!" });
-		}
-	}
 
 	return (
 		// needs to be a div to keep button formatting
