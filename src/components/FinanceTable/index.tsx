@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { FaTimes } from "react-icons/fa";
@@ -5,14 +7,32 @@ import classNames from "clsx";
 import dayjs from "dayjs";
 
 import { ItemProps } from "@/types/ItemProps";
-import { UppercaseFirstLetter } from "@/utils";
-import { categories } from "@/data/categories";
+import { CategoryProps } from "@/types/CategoryProps";
+import { UppercaseFirstLetter, getCategories } from "@/helpers";
 
 type Props = {
 	filteredList: ItemProps[];
 };
 
 export function FinanceTable({ filteredList }: Props) {
+	const [categories, setCategories] = useState<CategoryProps[]>([]);
+
+	const ref = useRef(true);
+
+	useEffect(() => {
+		if (ref.current) {
+			ref.current = false;
+
+			return;
+		}
+
+		async function fetchCategories() {
+			setCategories(await getCategories());
+		}
+
+		fetchCategories();
+	}, []);
+
 	return (
 		<Table hover>
 			<thead>

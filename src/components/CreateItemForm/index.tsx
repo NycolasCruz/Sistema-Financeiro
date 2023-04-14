@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect, useRef } from "react";
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -8,12 +8,13 @@ import Select from "react-select";
 import classNames from "clsx";
 
 import { useData } from "@/hooks/useData";
-import { categories } from "@/data/categories";
+import { getCategories } from "@/helpers";
+import { Toast } from "@/utils/mixins/toast";
 import { ReactSelectProps } from "@/types/ReactSelectProps";
 import { MaskedFormControl } from "@/components/MaskedFormControl";
 
 import "./styles.scss";
-import { Toast } from "@/utils/mixins/toast";
+import { CategoryProps } from "@/types/CategoryProps";
 
 type Props = {
 	currentDate: string;
@@ -26,7 +27,9 @@ export function CreateItemForm({ currentDate }: Props) {
 	const [selectedCategory, setSelectedCategory] = useState(
 		INITIAL_CATEGORY_IF_NO_OTHER_IS_SELECTED
 	);
+	const [categories, setCategories] = useState<CategoryProps[]>([]);
 	const { data, setData } = useData();
+	const ref = useRef(true);
 
 	const handleShow = () => setShow(true);
 	const handleClose = () => setShow(false);
@@ -37,6 +40,20 @@ export function CreateItemForm({ currentDate }: Props) {
 			label: category.name
 		};
 	});
+
+	useEffect(() => {
+		if (ref.current) {
+			ref.current = false;
+
+			return;
+		}
+
+		async function fetchCategories() {
+			setCategories(await getCategories());
+		}
+
+		fetchCategories();
+	}, []);
 
 	function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		try {
