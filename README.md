@@ -11,7 +11,6 @@
 - React Select
 - React Icons
 - Sweet Alert
-- JSON Server
 - Day js
 - Prettier
 - ESLint
