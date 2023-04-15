@@ -23,7 +23,7 @@ export function FinanceTable({ filteredList }: Props) {
 	const { setData } = useData();
 	const ref = useRef(true);
 
-	async function teste(id: number) {
+	async function handleDeleteItem(id: number) {
 		const result = await Swal.fire({
 			icon: "warning",
 			title: "Tem certeza que deseja excluir?",
@@ -94,7 +94,7 @@ export function FinanceTable({ filteredList }: Props) {
 							</td>
 							<td className="d-flex justify-content-end">
 								<Button
-									onClick={() => teste(item.id)}
+									onClick={() => handleDeleteItem(item.id)}
 									variant="danger"
 									className="d-flex justify-content-center align-items-center rounded-circle w-8 h-8 p-0"
 								>
