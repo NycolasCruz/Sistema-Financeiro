@@ -21,3 +21,9 @@ export async function getCategories() {
 
 	return data;
 }
+
+export async function getItems() {
+	const { data } = await axios.get<ItemProps[]>("http://localhost:3001/projects");
+
+	return data;
+}
