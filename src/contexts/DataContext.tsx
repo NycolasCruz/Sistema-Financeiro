@@ -1,11 +1,11 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 
-import axios from "axios";
-
+import { getItems } from "@/helpers";
 import { ItemProps } from "@/types/ItemProps";
 
 type DataContextType = {
 	data: ItemProps[];
+	setData: (data: ItemProps[]) => void;
 };
 
 type DataContextProviderProps = {
@@ -19,13 +19,11 @@ export function DataContextProvider({ children }: DataContextProviderProps) {
 
 	useEffect(() => {
 		async function getData() {
-			const { data } = await axios.get<ItemProps[]>("http://localhost:3001/projects");
-
-			setData(data);
+			setData(await getItems());
 		}
 
 		getData();
-	}, [data]);
+	}, []);
 
-	return <DataContext.Provider value={{ data }}>{children}</DataContext.Provider>;
+	return <DataContext.Provider value={{ data, setData }}>{children}</DataContext.Provider>;
 }

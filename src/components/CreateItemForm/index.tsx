@@ -8,8 +8,9 @@ import Select from "react-select";
 import classNames from "clsx";
 import axios from "axios";
 
-import { getCategories } from "@/helpers";
+import { useData } from "@/hooks/useData";
 import { Toast } from "@/utils/mixins/toast";
+import { getCategories, getItems } from "@/helpers";
 import { CategoryProps } from "@/types/CategoryProps";
 import { ReactSelectProps } from "@/types/ReactSelectProps";
 import { MaskedFormControl } from "@/components/MaskedFormControl";
@@ -28,6 +29,7 @@ export function CreateItemForm({ currentDate }: Props) {
 		INITIAL_CATEGORY_IF_NO_OTHER_IS_SELECTED
 	);
 	const [categories, setCategories] = useState<CategoryProps[]>([]);
+	const { setData } = useData();
 	const ref = useRef(true);
 
 	const handleShow = () => setShow(true);
@@ -56,6 +58,7 @@ export function CreateItemForm({ currentDate }: Props) {
 			});
 
 			handleClose();
+			setData(await getItems());
 
 			Toast.fire({ icon: "success", title: "Item adicionado com sucesso!" });
 		} catch (error) {
