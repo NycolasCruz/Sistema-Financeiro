@@ -58,6 +58,9 @@ export function CreateItemForm({ currentDate }: Props) {
 
 			handleClose();
 
+			setIsIncome(false);
+			setSelectedCategory(INITIAL_CATEGORY_IF_NO_OTHER_IS_SELECTED);
+
 			Toast.fire({ icon: "success", title: "Item adicionado com sucesso!" });
 		} catch (error) {
 			console.error(error);
