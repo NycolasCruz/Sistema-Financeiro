@@ -44,6 +44,13 @@ Pronto! Agora é só ligar o servidor com o comando:
 yarn start
 ````
 
+E ligar o servidor da Api com o comando:
+````
+yarn json-server
+````
+
+OBS: o deploy desta aplicação está sendo feito com a branch #main, que possui só o front end <a href="https://financial-sys.netlify.app">neste link</a>.
+
 ## 🐧 Autor
 
 <a href="https://github.com/NycolasCruz">
