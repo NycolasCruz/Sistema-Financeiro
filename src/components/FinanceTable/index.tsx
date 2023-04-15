@@ -22,7 +22,6 @@ export function FinanceTable({ filteredList }: Props) {
 					<th className="col-3">Categoria</th>
 					<th className="col-3">Data</th>
 					<th className="col-2">Custo</th>
-					<th className="col-2">Ações</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -48,14 +47,6 @@ export function FinanceTable({ filteredList }: Props) {
 								<div className={classNames(item.expense ? "expense-color" : "income-color")}>
 									{formattedValue}
 								</div>
-							</td>
-							<td className="d-flex justify-content-end">
-								<Button
-									variant="danger"
-									className="d-flex justify-content-center align-items-center rounded-circle w-8 h-8 p-0"
-								>
-									<FaTimes />
-								</Button>
 							</td>
 						</tr>
 					);
