@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect, useRef } from "react";
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -6,14 +6,15 @@ import Form from "react-bootstrap/Form";
 import { FaPlus } from "react-icons/fa";
 import Select from "react-select";
 import classNames from "clsx";
+import axios from "axios";
 
-import { useData } from "@/hooks/useData";
-import { categories } from "@/data/categories";
+import { getCategories } from "@/helpers";
+import { Toast } from "@/utils/mixins/toast";
+import { CategoryProps } from "@/types/CategoryProps";
 import { ReactSelectProps } from "@/types/ReactSelectProps";
 import { MaskedFormControl } from "@/components/MaskedFormControl";
 
 import "./styles.scss";
-import { Toast } from "@/utils/mixins/toast";
 
 type Props = {
 	currentDate: string;
@@ -26,7 +27,8 @@ export function CreateItemForm({ currentDate }: Props) {
 	const [selectedCategory, setSelectedCategory] = useState(
 		INITIAL_CATEGORY_IF_NO_OTHER_IS_SELECTED
 	);
-	const { data, setData } = useData();
+	const [categories, setCategories] = useState<CategoryProps[]>([]);
+	const ref = useRef(true);
 
 	const handleShow = () => setShow(true);
 	const handleClose = () => setShow(false);
@@ -38,23 +40,20 @@ export function CreateItemForm({ currentDate }: Props) {
 		};
 	});
 
-	function handleSubmit(event: FormEvent<HTMLFormElement>) {
+	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		try {
 			event.preventDefault();
 			const formData = new FormData(event.currentTarget);
 			const description = String(formData.get("description"));
 			const value = Number(String(formData.get("value")).replace(",", "."));
 
-			setData([
-				...data,
-				{
-					date: currentDate,
-					category: selectedCategory,
-					name: description,
-					value: value,
-					expense: !isIncome
-				}
-			]);
+			await axios.post("http://localhost:3001/projects", {
+				date: currentDate,
+				category: selectedCategory,
+				name: description,
+				value: value,
+				expense: !isIncome
+			});
 
 			handleClose();
 
@@ -65,6 +64,20 @@ export function CreateItemForm({ currentDate }: Props) {
 			Toast.fire({ icon: "error", title: "Erro ao adicionar item!" });
 		}
 	}
+
+	useEffect(() => {
+		if (ref.current) {
+			ref.current = false;
+
+			return;
+		}
+
+		async function fetchCategories() {
+			setCategories(await getCategories());
+		}
+
+		fetchCategories();
+	}, []);
 
 	return (
 		// needs to be a div to keep button formatting

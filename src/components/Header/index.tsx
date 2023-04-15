@@ -6,7 +6,7 @@ import classNames from "clsx";
 import dayjs from "dayjs";
 
 import { ItemProps } from "@/types/ItemProps";
-import { UppercaseFirstLetter } from "@/utils";
+import { UppercaseFirstLetter } from "@/helpers";
 import { CreateItemForm } from "@/components/CreateItemForm";
 
 import "./styles.scss";
