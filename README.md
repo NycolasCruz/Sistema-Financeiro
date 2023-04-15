@@ -25,7 +25,6 @@
 - [x] Utilização de tipagens do TypeScript para o desenvolvimento do projeto
 - [x] Fomatação de código com Prettier
 - [x] Análise de erros com ESLint
-- [ ] Botão de excluir item
 
 ## 🕹️ Instalação
 
