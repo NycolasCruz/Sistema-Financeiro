@@ -57,6 +57,9 @@ export function CreateItemForm({ currentDate }: Props) {
 				expense: !isIncome
 			});
 
+			setIsIncome(false);
+			setSelectedCategory(INITIAL_CATEGORY_IF_NO_OTHER_IS_SELECTED);
+
 			handleClose();
 			setData(await getItems());
 
