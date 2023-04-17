@@ -5,16 +5,14 @@ $active-purple: #6459dd;
 
 .button-purple {
 	background-color: $purple !important;
-}
-
-.button-purple:hover {
-	background-color: $active-purple !important;
+	&:hover {
+		background-color: $active-purple !important;
+	}
 }
 
 .button-success {
 	background-color: $green-water !important;
-}
-
-.button-success:hover {
-	background-color: $active-green-water !important;
+	&:hover {
+		background-color: $active-green-water !important;
+	}
 }
