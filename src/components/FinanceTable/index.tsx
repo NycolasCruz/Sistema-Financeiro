@@ -1,6 +1,4 @@
 import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
-import { FaTimes } from "react-icons/fa";
 import classNames from "clsx";
 import dayjs from "dayjs";
 
