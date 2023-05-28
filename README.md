@@ -33,7 +33,7 @@
 
 Certifique-se de ter o NodeJS instalado na sua máquina, caso não tenha, instale seu executável clicando neste <a href="https://nodejs.org/pt-br/download/">link</a>.
 
-Instale também o Yarn caso não o tenha com o comando ````npm install --global yarn````.
+Instale também o Yarn caso não o tenha com o comando ````npm i -g yarn````.
 
 Em seguida clone o projeto.
 
@@ -46,10 +46,12 @@ yarn start
 
 E ligar o servidor da Api com o comando:
 ````
-yarn json-server
+yarn backend
 ````
 
-OBS: o deploy desta aplicação está sendo feito <a href="https://financial-sys.netlify.app" target="_blank">neste link</a> com a branch #main, que só possui o front end.
+OBS 1: é necessário ter o JSON Server instalado na globalmente, caso não tenha, instale com o comando ````npm i -g json-server````.
+
+OBS 2: o deploy desta aplicação está sendo feito <a href="https://financial-sys.netlify.app" target="_blank">neste link</a> com a branch #main, que só possui o front end.
 
 ## 🐧 Autor
 
