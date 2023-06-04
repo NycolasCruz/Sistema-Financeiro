@@ -1,12 +1,12 @@
 import { FormEvent, useState, useEffect, useRef } from "react";
+import classNames from "clsx";
+import axios from "axios";
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { FaPlus } from "react-icons/fa";
 import Select from "react-select";
-import classNames from "clsx";
-import axios from "axios";
 
 import { useData } from "@/hooks/useData";
 import { Toast } from "@/utils/mixins/toast";
@@ -86,7 +86,6 @@ export function CreateItemForm({ currentDate }: Props) {
 	}, []);
 
 	return (
-		// needs to be a div to keep button formatting
 		<div className="pe-2">
 			<Button
 				variant="none"

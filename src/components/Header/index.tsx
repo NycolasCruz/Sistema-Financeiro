@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
+import classNames from "clsx";
+import dayjs from "dayjs";
 
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
-import classNames from "clsx";
-import dayjs from "dayjs";
 
 import { ItemProps } from "@/types/ItemProps";
 import { UppercaseFirstLetter } from "@/helpers";
