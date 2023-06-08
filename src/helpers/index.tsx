@@ -12,7 +12,7 @@ export function FilterList(list: ItemProps[], currentDate: string) {
 	});
 }
 
-export function UppercaseFirstLetter(word: string) {
+export function uppercaseFirstLetter(word: string) {
 	return word[0].toUpperCase() + word.slice(1).toLowerCase();
 }
 

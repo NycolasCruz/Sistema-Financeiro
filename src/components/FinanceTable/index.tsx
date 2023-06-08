@@ -12,7 +12,7 @@ import { useData } from "@/hooks/useData";
 import { Toast } from "@/utils/mixins/toast";
 import { ItemProps } from "@/types/ItemProps";
 import { CategoryProps } from "@/types/CategoryProps";
-import { UppercaseFirstLetter, getCategories, getItems } from "@/helpers";
+import { uppercaseFirstLetter, getCategories, getItems } from "@/helpers";
 
 type Props = {
 	filteredList: ItemProps[];
@@ -80,7 +80,7 @@ export function FinanceTable({ filteredList }: Props) {
 					return (
 						<tr className="align-middle" key={`item-${item.id}`}>
 							<td className="col-1">{index + 1}</td>
-							<td className="col-3">{UppercaseFirstLetter(item.name)}</td>
+							<td className="col-3">{uppercaseFirstLetter(item.name)}</td>
 							<td className="col-3 text-white">
 								<div className="rounded fit-content px-2" style={{ background: category?.color }}>
 									{category?.name}
