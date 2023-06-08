@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
+import localizedFormat from "dayjs/plugin/localizedFormat";
 import classNames from "clsx";
+import "dayjs/locale/pt-br";
 import dayjs from "dayjs";
 
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
 
 import { ItemProps } from "@/types/ItemProps";
-import { UppercaseFirstLetter } from "@/helpers";
+import { uppercaseFirstLetter } from "@/helpers";
 import { CreateItemForm } from "@/components/CreateItemForm";
 
 import "./styles.scss";
+
+dayjs.extend(localizedFormat);
 
 type Props = {
 	currentDate: string;
@@ -20,27 +24,33 @@ type Props = {
 export function Header({ currentDate, setCurrentDate, data }: Props) {
 	const [balanceColor, setBalanceColor] = useState("");
 
-	const [currentYear, currentMonth] = currentDate.split("-");
-	const date = new Date(Date.UTC(Number(currentYear), Number(currentMonth)));
-	const translatedDate = date.toLocaleDateString("pt-br", { year: "numeric", month: "long" });
+	const [, currentMonth] = currentDate.split("-");
+
+	const translatedDate = uppercaseFirstLetter(
+		dayjs(currentDate)
+			.locale("pt-br")
+			.format("LL")
+			.split(" ")
+			.slice(2)
+			.toString()
+			.replaceAll(",", " ")
+	);
+
+	const expenses = calculateExpenseOrBalanceForTheMonth(true);
+	const incomes = calculateExpenseOrBalanceForTheMonth();
+	const result = incomes - expenses;
 
 	function calculateExpenseOrBalanceForTheMonth(isExpense?: boolean) {
 		return data
 			.filter((item) => {
 				const [, month] = item.date.split("-");
 
-				if (month == currentMonth) {
+				if (month === currentMonth) {
 					return isExpense ? item.expense : !item.expense;
 				}
 			})
 			.reduce((acc, item) => acc + item.value, 0);
 	}
-
-	const Expenses = calculateExpenseOrBalanceForTheMonth(true);
-
-	const Incomes = calculateExpenseOrBalanceForTheMonth();
-
-	const result = Incomes - Expenses;
 
 	function handlePreviousMonth() {
 		setCurrentDate(dayjs(currentDate).subtract(1, "month").format("YYYY-MM"));
@@ -50,22 +60,8 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 		setCurrentDate(dayjs(currentDate).add(1, "month").format("YYYY-MM"));
 	}
 
-	function handleExpenses() {
-		return Expenses.toLocaleString("pt-br", {
-			style: "currency",
-			currency: "BRL"
-		});
-	}
-
-	function handleIncomes() {
-		return Incomes.toLocaleString("pt-br", {
-			style: "currency",
-			currency: "BRL"
-		});
-	}
-
-	function handleBalance() {
-		return result.toLocaleString("pt-br", {
+	function transformToCurrency(value: number) {
+		return value.toLocaleString("pt-br", {
 			style: "currency",
 			currency: "BRL"
 		});
@@ -87,7 +83,7 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 				</Button>
 
 				<div className="fw-semibold text-muted fs-17 w-40">
-					{UppercaseFirstLetter(translatedDate)}
+					{uppercaseFirstLetter(translatedDate)}
 				</div>
 
 				<Button
@@ -102,17 +98,17 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 			<div className="d-flex justify-content-between gap-10 mx-18 w-100">
 				<div className="d-flex flex-column">
 					<span className="fw-semibold text-muted fs-17">Despesa</span>
-					<span className="fw-bold expense-color">{handleExpenses()}</span>
+					<span className="fw-bold expense-color">{transformToCurrency(expenses)}</span>
 				</div>
 
 				<div className="d-flex flex-column">
 					<span className="fw-semibold text-muted fs-17">Receita</span>
-					<span className="fw-bold income-color">{handleIncomes()}</span>
+					<span className="fw-bold income-color">{transformToCurrency(incomes)}</span>
 				</div>
 
 				<div className="d-flex flex-column">
 					<span className="fw-semibold text-muted fs-17">Saldo</span>
-					<span className={classNames("fw-bold", balanceColor)}>{handleBalance()}</span>
+					<span className={classNames("fw-bold", balanceColor)}>{transformToCurrency(result)}</span>
 				</div>
 			</div>
 
