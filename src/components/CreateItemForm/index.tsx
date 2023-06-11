@@ -1,4 +1,4 @@
-import { FormEvent, useState, useEffect, useRef } from "react";
+import { FormEvent, useState } from "react";
 import classNames from "clsx";
 import axios from "axios";
 
@@ -8,10 +8,9 @@ import Form from "react-bootstrap/Form";
 import { FaPlus } from "react-icons/fa";
 import Select from "react-select";
 
-import { useData } from "@/hooks/useData";
 import { Toast } from "@/utils/mixins/toast";
-import { getCategories, getItems } from "@/helpers";
-import { CategoryProps } from "@/types/CategoryProps";
+import { useTableData } from "@/hooks/useTableData";
+import { useCategories } from "@/hooks/useCategories";
 import { ReactSelectProps } from "@/types/ReactSelectProps";
 import { MaskedFormControl } from "@/components/MaskedFormControl";
 
@@ -23,14 +22,15 @@ type Props = {
 
 export function CreateItemForm({ currentDate }: Props) {
 	const INITIAL_CATEGORY_IF_NO_OTHER_IS_SELECTED = 1;
-	const [isIncome, setIsIncome] = useState(false);
+
 	const [show, setShow] = useState(false);
+	const [isIncome, setIsIncome] = useState(false);
 	const [selectedCategory, setSelectedCategory] = useState(
 		INITIAL_CATEGORY_IF_NO_OTHER_IS_SELECTED
 	);
-	const [categories, setCategories] = useState<CategoryProps[]>([]);
-	const { setData } = useData();
-	const ref = useRef(true);
+
+	const { getTableData } = useTableData();
+	const { categories } = useCategories();
 
 	const handleShow = () => setShow(true);
 	const handleClose = () => setShow(false);
@@ -45,15 +45,15 @@ export function CreateItemForm({ currentDate }: Props) {
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		try {
 			event.preventDefault();
+
 			const formData = new FormData(event.currentTarget);
-			const description = String(formData.get("description"));
-			const value = Number(String(formData.get("value")).replace(",", "."));
+			const value = String(formData.get("value")).replace(",", ".");
 
 			await axios.post("http://localhost:3001/projects", {
+				...Object.fromEntries(formData),
 				date: currentDate,
 				category: selectedCategory,
-				name: description,
-				value: value,
+				value: Number(value),
 				expense: !isIncome
 			});
 
@@ -61,7 +61,7 @@ export function CreateItemForm({ currentDate }: Props) {
 			setSelectedCategory(INITIAL_CATEGORY_IF_NO_OTHER_IS_SELECTED);
 
 			handleClose();
-			setData(await getItems());
+			getTableData();
 
 			Toast.fire({ icon: "success", title: "Item adicionado com sucesso!" });
 		} catch (error) {
@@ -70,20 +70,6 @@ export function CreateItemForm({ currentDate }: Props) {
 			Toast.fire({ icon: "error", title: "Erro ao adicionar item!" });
 		}
 	}
-
-	useEffect(() => {
-		if (ref.current) {
-			ref.current = false;
-
-			return;
-		}
-
-		async function fetchCategories() {
-			setCategories(await getCategories());
-		}
-
-		fetchCategories();
-	}, []);
 
 	return (
 		<div className="pe-2">

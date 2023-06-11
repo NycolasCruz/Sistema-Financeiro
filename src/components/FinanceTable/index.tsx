@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import classNames from "clsx";
 import dayjs from "dayjs";
 import axios from "axios";
@@ -8,20 +7,19 @@ import Button from "react-bootstrap/Button";
 import { FaTimes } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-import { useData } from "@/hooks/useData";
 import { Toast } from "@/utils/mixins/toast";
 import { ItemProps } from "@/types/ItemProps";
-import { CategoryProps } from "@/types/CategoryProps";
-import { uppercaseFirstLetter, getCategories, getItems } from "@/helpers";
+import { uppercaseFirstLetter } from "@/helpers";
+import { useTableData } from "@/hooks/useTableData";
+import { useCategories } from "@/hooks/useCategories";
 
 type Props = {
 	filteredList: ItemProps[];
 };
 
 export function FinanceTable({ filteredList }: Props) {
-	const [categories, setCategories] = useState<CategoryProps[]>([]);
-	const { setData } = useData();
-	const ref = useRef(true);
+	const { getTableData } = useTableData();
+	const { categories } = useCategories();
 
 	async function handleDeleteItem(id: number) {
 		const result = await Swal.fire({
@@ -34,27 +32,19 @@ export function FinanceTable({ filteredList }: Props) {
 		});
 
 		if (result.isConfirmed) {
-			axios.delete(`http://localhost:3001/projects/${id}`);
+			try {
+				await axios.delete(`http://localhost:3001/projects/${id}`);
 
-			setData(await getItems());
+				getTableData();
 
-			Toast.fire({ icon: "success", title: "Excluído com sucesso!" });
+				Toast.fire({ icon: "success", title: "Excluído com sucesso!" });
+			} catch (error) {
+				console.log(error);
+
+				Toast.fire({ icon: "error", title: "Erro ao excluir!" });
+			}
 		}
 	}
-
-	useEffect(() => {
-		if (ref.current) {
-			ref.current = false;
-
-			return;
-		}
-
-		async function fetchCategories() {
-			setCategories(await getCategories());
-		}
-
-		fetchCategories();
-	}, []);
 
 	return (
 		<Table hover>
@@ -80,7 +70,7 @@ export function FinanceTable({ filteredList }: Props) {
 					return (
 						<tr className="align-middle" key={`item-${item.id}`}>
 							<td className="col-1">{index + 1}</td>
-							<td className="col-3">{uppercaseFirstLetter(item.name).toLowerCase()}</td>
+							<td className="col-3">{uppercaseFirstLetter(item.description).toLowerCase()}</td>
 							<td className="col-3 text-white">
 								<div className="rounded fit-content px-2" style={{ background: category?.color }}>
 									{category?.name}
