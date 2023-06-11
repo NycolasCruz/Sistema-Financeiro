@@ -24,17 +24,14 @@ type Props = {
 export function Header({ currentDate, setCurrentDate, data }: Props) {
 	const [balanceColor, setBalanceColor] = useState("");
 
-	const [, currentMonth] = currentDate.split("-");
+	const currentMonth = currentDate.split("-")[1];
 
-	const translatedDate = uppercaseFirstLetter(
-		dayjs(currentDate)
-			.locale("pt-br")
-			.format("LL")
-			.split(" ")
-			.slice(2)
-			.toString()
-			.replaceAll(",", " ")
-	);
+	const translatedDate = dayjs(currentDate)
+		.locale("pt-br")
+		.format("LL")
+		.split(" ")
+		.slice(2)
+		.join(" ");
 
 	const expenses = calculateExpenseOrBalanceForTheMonth(true);
 	const incomes = calculateExpenseOrBalanceForTheMonth();
@@ -43,7 +40,7 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 	function calculateExpenseOrBalanceForTheMonth(isExpense?: boolean) {
 		return data
 			.filter((item) => {
-				const [, month] = item.date.split("-");
+				const month = item.date.split("-")[1];
 
 				if (month === currentMonth) {
 					return isExpense ? item.expense : !item.expense;
