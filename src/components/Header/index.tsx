@@ -18,10 +18,10 @@ dayjs.extend(localizedFormat);
 type Props = {
 	currentDate: string;
 	setCurrentDate: (currentDate: string) => void;
-	data: ItemProps[];
+	tableData: ItemProps[];
 };
 
-export function Header({ currentDate, setCurrentDate, data }: Props) {
+export function Header({ currentDate, setCurrentDate, tableData }: Props) {
 	const [balanceColor, setBalanceColor] = useState("");
 
 	const currentMonth = currentDate.split("-")[1];
@@ -38,7 +38,7 @@ export function Header({ currentDate, setCurrentDate, data }: Props) {
 	const result = incomes - expenses;
 
 	function calculateExpenseOrBalanceForTheMonth(isExpense?: boolean) {
-		return data
+		return tableData
 			.filter((item) => {
 				const month = item.date.split("-")[1];
 

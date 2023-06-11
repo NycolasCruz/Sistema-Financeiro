@@ -4,19 +4,19 @@ import dayjs from "dayjs";
 import Card from "react-bootstrap/Card";
 
 import { FilterList } from "./helpers";
-import { useData } from "./hooks/useData";
 import { ItemProps } from "./types/ItemProps";
+import { useTableData } from "./hooks/useTableData";
 import { FinanceTable } from "./components/FinanceTable";
 import { Header } from "./components/Header";
 
 export default function App() {
 	const [filteredList, setFilteredList] = useState<ItemProps[]>([]);
 	const [currentDate, setCurrentDate] = useState(dayjs().format("YYYY-MM-DD"));
-	const { data } = useData();
+	const { tableData } = useTableData();
 
 	useEffect(() => {
-		setFilteredList(FilterList(data, currentDate));
-	}, [data, currentDate]);
+		setFilteredList(FilterList(tableData, currentDate));
+	}, [tableData, currentDate]);
 
 	return (
 		<Card.Body className="mt-8 mx-12 mb-12">
@@ -27,7 +27,7 @@ export default function App() {
 			</div>
 
 			<div className="d-flex flex-column bg-white rounded shadow gap-3 mb-9 mx-5 mt-n25 py-6 px-9">
-				<Header currentDate={currentDate} setCurrentDate={setCurrentDate} data={data} />
+				<Header currentDate={currentDate} setCurrentDate={setCurrentDate} tableData={tableData} />
 				<FinanceTable filteredList={filteredList} />
 			</div>
 		</Card.Body>
