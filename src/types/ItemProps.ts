@@ -2,7 +2,7 @@ export type ItemProps = {
 	id: number;
 	date: string;
 	category: number;
-	name: string;
+	description: string;
 	value: number;
 	expense?: boolean;
 };
