@@ -11,7 +11,6 @@ import Select from "react-select";
 import { Toast } from "@/utils/mixins/toast";
 import { useTableData } from "@/hooks/useTableData";
 import { useCategories } from "@/hooks/useCategories";
-import { ReactSelectProps } from "@/types/ReactSelectProps";
 import { MaskedFormControl } from "@/components/MaskedFormControl";
 
 import "./styles.scss";

@@ -1,8 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import axios from "axios";
 
-import { ItemProps } from "@/types/ItemProps";
-
 type TableDataContextType = {
 	tableData: ItemProps[];
 	getTableData: () => void;

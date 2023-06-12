@@ -7,7 +7,6 @@ import dayjs from "dayjs";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
 
-import { ItemProps } from "@/types/ItemProps";
 import { uppercaseFirstLetter } from "@/helpers";
 import { CreateItemForm } from "@/components/CreateItemForm";
 

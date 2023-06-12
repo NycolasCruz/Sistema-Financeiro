@@ -1,8 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 import axios from "axios";
 
-import { CategoryProps } from "@/types/CategoryProps";
-
 type CategoriesContextType = {
 	categories: CategoryProps[];
 };

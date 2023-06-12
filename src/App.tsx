@@ -4,7 +4,6 @@ import dayjs from "dayjs";
 import Card from "react-bootstrap/Card";
 
 import { FilterList } from "./helpers";
-import { ItemProps } from "./types/ItemProps";
 import { useTableData } from "./hooks/useTableData";
 import { FinanceTable } from "./components/FinanceTable";
 import { Header } from "./components/Header";
