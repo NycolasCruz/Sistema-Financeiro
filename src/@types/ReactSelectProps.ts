@@ -1,4 +1,4 @@
-export type ReactSelectProps = {
+type ReactSelectProps = {
 	value: number;
 	label: string;
 };
