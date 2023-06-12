@@ -8,7 +8,6 @@ import { FaTimes } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 import { Toast } from "@/utils/mixins/toast";
-import { ItemProps } from "@/types/ItemProps";
 import { uppercaseFirstLetter } from "@/helpers";
 import { useTableData } from "@/hooks/useTableData";
 import { useCategories } from "@/hooks/useCategories";

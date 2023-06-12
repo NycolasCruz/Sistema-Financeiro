@@ -1,4 +1,4 @@
-export type ItemProps = {
+type ItemProps = {
 	id: number;
 	date: string;
 	category: number;
